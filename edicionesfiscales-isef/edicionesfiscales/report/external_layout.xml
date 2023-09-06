@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="external_layout" inherit_id="web.external_layout">
+        <xpath expr="//t[@t-if='company.external_report_layout_id']" position="after">
+            <t
+                t-if="company.external_report_layout_id and doc_model not in ['sale.order']"
+                t-call="{{company.external_report_layout_id.key}}"
+            >
+                <t t-raw="0" />
+            </t>
+        </xpath>
+        <xpath expr="//t[@t-if='company.external_report_layout_id']" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+</odoo>

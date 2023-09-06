@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<odoo noupdate="1">
+
+    <record id="data_res_partner_invoice_address_edicionesfiscales" model="res.partner">
+        <field name="type">invoice</field>
+        <field name="parent_id" ref="base.main_partner" />
+        <field name="street">Avenida del Taller 82</field>
+        <field name="street2">P.A.</field>
+        <field name="zip">06820</field>
+        <field name="email">editorialisef@grupoisef.com.mx</field>
+        <field name="state_id" ref="base.state_mx_df" />
+        <field name="country_id" ref="base.mx" />
+    </record>
+
+    <record id="base.main_company" model="res.company">
+        <field name="name">Ediciones Fiscales Isef, S.A.</field>
+        <field name="street">Avenida del Taller 82</field>
+        <field name="street2">P.A.</field>
+        <field name="zip">06820</field>
+        <field name="vat">EFI810313MB2</field>
+        <field name="email">editorialisef@grupoisef.com.mx</field>
+        <field name="website">https://libreriaisef.com.mx</field>
+        <field name="currency_id" ref="base.MXN" />
+        <field name="state_id" ref="base.state_mx_df" />
+        <field name="country_id" ref="base.mx" />
+        <field name="logo" type="base64" file="edicionesfiscales/static/img/logo.png" />
+        <field name="l10n_mx_edi_fiscal_regime">601</field>
+    </record>
+
+</odoo>

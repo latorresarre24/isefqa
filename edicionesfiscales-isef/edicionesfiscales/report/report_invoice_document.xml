@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//p[@name='payment_communication']" position="attributes">
+            <attribute name="class" separator=" " add="h5" />
+        </xpath>
+        <xpath expr="//div[@t-field='o.partner_id']" position="attributes">
+            <attribute name="t-options">
+                {&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;], &quot;no_marker&quot;: True}
+            </attribute>
+        </xpath>
+        <xpath expr="//div[@t-field='o.partner_id']" position="after">
+            <span t-esc="o.partner_id.street_name" />
+            <span t-esc="o.partner_id.street_number" />
+            <t t-if="o.partner_id.l10n_mx_edi_colony"><br /><span t-esc="o.partner_id.l10n_mx_edi_colony" /></t>
+            <t t-if="o.partner_id.l10n_mx_edi_locality"><br /><span t-esc="o.partner_id.l10n_mx_edi_locality" /></t>
+            <span t-esc="o.partner_id.zip" />
+            <span t-esc="o.partner_id.city" />
+            <span t-esc="o.partner_id.state_id.name" /><br />
+            <span t-esc="o.partner_id.country_id.name" />
+            <t t-if="o.partner_id.phone"><br /><span t-esc="o.partner_id.phone" /></t>
+            <t t-if="o.partner_id.mobile"><br /><span t-esc="o.partner_id.mobile" /></t>
+            <t t-if="o.partner_id.email"><br /><span t-esc="o.partner_id.email" /></t>
+            <t t-if="o.partner_id.comment"><br /><span t-esc="o.partner_id.comment" /></t>
+            <br />
+        </xpath>
+        <xpath expr="//div[@t-field='o.partner_shipping_id']" position="attributes">
+            <attribute name="t-options">
+                {&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;], &quot;no_marker&quot;: True}
+            </attribute>
+        </xpath>
+         <xpath expr="//div[@t-field='o.partner_shipping_id']" position="after">
+            <span t-esc="o.partner_shipping_id.street_name" />
+            <span t-esc="o.partner_shipping_id.street_number" />
+            <t t-if="o.partner_shipping_id.l10n_mx_edi_colony">
+                <br />
+                <span t-esc="o.partner_shipping_id.l10n_mx_edi_colony" />
+            </t>
+            <t t-if="o.partner_shipping_id.l10n_mx_edi_locality">
+                <br />
+                <span t-esc="o.partner_shipping_id.l10n_mx_edi_locality" />
+            </t>
+            <span t-esc="o.partner_shipping_id.zip" />
+            <span t-esc="o.partner_shipping_id.city" />
+            <span t-esc="o.partner_shipping_id.state_id.name" /><br />
+            <span t-esc="o.partner_shipping_id.country_id.name" />
+            <t t-if="o.partner_shipping_id.phone"><br /><span t-esc="o.partner_shipping_id.phone" /></t>
+            <t t-if="o.partner_shipping_id.mobile"><br /><span t-esc="o.partner_shipping_id.mobile" /></t>
+            <t t-if="o.partner_shipping_id.email"><br /><span t-esc="o.partner_shipping_id.email" /></t>
+            <t t-if="o.partner_shipping_id.comment"><br /><span t-esc="o.partner_shipping_id.comment" /></t>
+            <br />
+        </xpath>
+        <xpath expr="//span[@t-field='o.fiscal_position_id.note']/.." position="after">
+            <p t-if="o.move_type == 'out_invoice'" name="note_legend">
+                <span class="h5" style="color: rgb(102, 102, 102);">
+                    We owe and will unconditionally pay to the order of Ediciones Fiscales Isef, S.A. in Mexico City the amount mentioned in the total of the invoice for the merchandise received to my satisfaction, the lack of timely payment of this promissory note will bring with it moratorium interest of 2.5% per month.
+                </span>
+            </p>
+            <p t-if="o.move_type == 'out_refund'" name="note_credit_note">
+                <span class="h5" style="color: rgb(102, 102, 102);">
+                    This credit note is valid for one year. To make it valid from the date of emission.
+                </span>
+            </p>
+        </xpath>
+    </template>
+    <record id="account.account_invoices" model="ir.actions.report">
+        <field name="paperformat_id" ref="us_letter_big" />
+    </record>
+</odoo>

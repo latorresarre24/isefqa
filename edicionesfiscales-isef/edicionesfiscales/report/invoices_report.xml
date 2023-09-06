@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_my_invoices">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout" t-lang="en_US">
+                <div style="font-size:x-small">
+                    <center>
+                        <h3>
+                            <span>Account Statement</span>
+                            <br />
+                            <span t-esc="partner" />
+                        </h3>
+                        <h4>
+                            <span>Transaction details</span>
+                        </h4>
+                        <h6>
+                            <span>From </span>
+                            <span t-esc="start_date" />
+                            <span> To </span>
+                            <span t-esc="end_date" />
+                        </h6>
+                    </center>
+
+                    <!-- 1. TABLE OF TRANSACTION DETAILS-->
+                    <t t-if="docs">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-left" style="width:auto !important;">Document #</th>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Due Date</th>
+                                    <th class="text-right">Amount</th>
+                                    <th class="text-center">Reference</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="aml">
+                                    <!-- 1.1 PAYMENTS-->
+                                    <tr>
+                                        <t t-if="aml.payment_id">
+                                            <td style="padding: 1px !important;">
+                                                <strong>
+                                                    <p t-field="aml.payment_id.name" />
+                                                </strong>
+                                            </td>
+                                            <td class="text-center" style="padding: 1px !important;">
+                                                <p t-field="aml.date" />
+                                            </td>
+                                            <td />
+                                            <td class="text-right" style="padding: 1px !important;">
+                                                <p t-field="aml.balance" />
+                                            </td>
+                                            <td class="text-center" style="padding: 1px !important;">
+                                                <p t-field="aml.name" />
+                                            </td>
+                                        </t>
+                                        <!--1.2 NOC AND INVOICES -->
+                                        <t t-if="aml.move_id">
+                                            <td style="padding: 1px !important;">
+                                                <strong>
+                                                    <a
+                                                        t-att-href="aml.move_id.get_portal_url()"
+                                                        t-att-title="aml.move_id.sequence_number"
+                                                    >
+                                                        <p t-field="aml.move_id.sequence_number" />
+                                                    </a>
+                                                </strong>
+                                            </td>
+                                            <td class="text-center" style="padding: 1px !important;">
+                                                <p t-field="aml.date" />
+                                            </td>
+                                            <td class="text-center" style="padding: 1px !important;">
+                                                <p t-field="aml.date_maturity" />
+                                            </td>
+                                            <td class="text-right" style="padding: 1px !important;">
+                                                <p t-field="aml.balance" />
+                                            </td>
+                                            <td class="text-center" style="padding: 1px !important;">
+                                                <p t-field="aml.name" />
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <!-- 2. SUMMARY OF THE TRANSACTIONS DETAILS -->
+                        <div class="clearfix">
+                            <div id="total" class="row">
+                                <div
+                                    t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto"
+                                >
+                                    <table class="table table-sm" name="summary_table">
+                                        <tr>
+                                            <td style="padding: 5px !important;">
+                                                <strong>Initial Balance</strong>
+                                            </td>
+                                            <td class="text-right" style="padding: 5px !important;">
+                                                <span
+                                                    t-esc="initial_balance"
+                                                    t-options='{"widget": "monetary", "display_currency": currency_id}'
+                                                />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 5px !important;">
+                                                <strong>Full Invoicing</strong>
+                                            </td>
+                                            <td class="text-right" style="padding: 5px !important;">
+                                                <span
+                                                    t-esc="total_invoicing"
+                                                    t-options='{"widget": "monetary", "display_currency": currency_id}'
+                                                />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 1px !important;">
+                                                <strong>Total Payment</strong>
+                                            </td>
+                                            <td class="text-right" style="padding: 5px !important;">
+                                                <t t-set="full_invoicing" t-value="0" />
+                                                <span
+                                                    t-esc="total_payment"
+                                                    t-options='{"widget": "monetary", "display_currency": currency_id}'
+                                                />
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black o_total">
+                                            <td style="padding: 1px !important;">
+                                                <strong>Balance</strong>
+                                            </td>
+                                            <td class="text-right" style="padding: 5px !important;">
+                                                <span
+                                                    t-esc="balance"
+                                                    t-options='{"widget": "monetary", "display_currency": currency_id}'
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-if="unpaid_aml">
+                        <center>
+                            <h3>
+                                <span>Balance</span>
+                            </h3>
+                        </center>
+
+                        <!--3. PENDING INVOICES AND PAYMENTS-->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-left" style="width:auto !important">Document #</th>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Due Date</th>
+                                    <th class="text-center">Expired days</th>
+                                    <th class="text-right">Amount</th>
+                                    <th class="text-center">Reference</th>
+                                    <th class="text-right">Amount Due</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="unpaid_aml" t-as="aml">
+                                    <!-- 3.1.1 PAYMENTS-->
+                                    <tr>
+                                        <t t-if="aml.payment_id">
+                                            <td style="padding: 5px !important;">
+                                                <strong>
+                                                    <p t-field="aml.payment_id.name" />
+                                                </strong>
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <p t-field="aml.date" />
+                                            </td>
+                                            <td colspan="2" />
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <p t-field="aml.balance" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <p t-field="aml.name" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <t t-if="not aml.full_reconcile_id">
+                                                    <p t-esc="aml.amount_residual" />
+                                                </t>
+                                            </td>
+                                        </t>
+                                        <!--3.1.2 NOC AND INVOICES -->
+                                        <t t-if="aml.move_id">
+                                            <td style="padding: 5px !important;">
+                                                <strong>
+                                                    <a
+                                                        t-att-href="aml.move_id.get_portal_url()"
+                                                        t-att-title="aml.move_id.sequence_number"
+                                                    >
+                                                        <p t-field="aml.move_id.sequence_number" />
+                                                    </a>
+                                                </strong>
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <p t-field="aml.date" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <p t-field="aml.date_maturity" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <t
+                                                    t-if="aml.move_id.payment_state=='partial'"
+                                                    t-esc="aml.move_id.invoice_date_due"
+                                                />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <p t-field="aml.balance" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <p t-field="aml.name" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <p t-field="aml.move_id.amount_residual_signed" />
+                                            </td>
+                                        </t>
+                                    </tr>
+                                    <!--3.2.1 credit moves of the aml -->
+                                    <t t-foreach="aml.matched_credit_ids" t-as="credits">
+                                        <tr>
+                                            <td style="padding: 5px !important;">
+                                                <span class="italic" t-field="credits.credit_move_id.name" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <span class="italic" t-field="credits.credit_move_id.date" />
+                                            </td>
+                                            <td colspan="2" />
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <span
+                                                    class="italic"
+                                                    t-esc="-credits.amount"
+                                                    t-options='{"widget": "monetary", "display_currency": currency_id}'
+                                                />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <span class="italic" t-esc="credits.credit_move_id.name" />
+                                            </td>
+                                            <td />
+                                        </tr>
+                                    </t>
+                                    <!--3.2.1 debit moves of the aml -->
+                                    <t t-foreach="aml.matched_debit_ids" t-as="debits">
+                                        <tr>
+                                            <td style="padding: 5px !important;">
+                                                <span class="italic" t-field="debits.debit_move_id.name" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <span class="italic" t-field="debits.debit_move_id.date" />
+                                            </td>
+                                            <td colspan="2" />
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <span class="italic" t-field="debits.amount" />
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-center">
+                                                <span class="italic" t-field="debits.debit_move_id.name" />
+                                            </td>
+                                            <td />
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <!-- 4. SUMMARY OF THE TRANSACTIONS DETAILS -->
+                        <div class="clearfix">
+                            <div id="total" class="row">
+                                <div
+                                    t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto"
+                                >
+                                    <table class="table table-sm" name="summary_table">
+                                        <tr class="border-black o_subtotal">
+                                            <td style="padding: 5px !important;">
+                                                <strong>Total due</strong>
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <span
+                                                    t-esc="unpaid_amount"
+                                                    t-options='{"widget": "monetary", "display_currency": currency_id}'
+                                                />
+                                            </td>
+                                        </tr>
+                                        <tr class="border-black o_subtotal">
+                                            <td style="padding: 5px !important;">
+                                                <strong>Total Expired</strong>
+                                            </td>
+                                            <td style="padding: 5px !important;" class="text-right">
+                                                <span
+                                                    t-esc="lapsed_amount"
+                                                    t-options='{"widget": "monetary", "display_currency": currency_id}'
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <p> Without further ado, I remain at your service for any questions or clarifications. </p>
+                    <p>Sincerely.</p>
+                    <table>
+                        <tr>
+                            <td> Sales Executive </td>
+                            <td> Cinthia Avila Arroyo</td>
+                        </tr>
+                        <tr>
+                            <td style="border-bottom:0;"> Sales Team </td>
+                            <td style="border-bottom:0;"> Coordinación Librerías </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="my_invoices_report_pdf" model="ir.actions.report">
+        <field name="model">account.move.line</field>
+        <field name="name">Partner invoices</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="attachment_use">False</field>
+        <field name="report_name">edicionesfiscales.report_my_invoices</field>
+        <field name="report_file">edicionesfiscales.report_my_invoices</field>
+    </record>
+</odoo>

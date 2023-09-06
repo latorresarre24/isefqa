@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
+        <!-- Modify the size of the logo -->
+        <xpath expr="//img[@t-if='company.logo']" position="attributes">
+            <attribute name="style">height:120px; max-height: 120px !important;</attribute>
+        </xpath>
+        <xpath expr="//img[@t-if='company.logo']/.." position="attributes">
+            <attribute name="class">col-4</attribute>
+        </xpath>
+        <xpath expr="//div[@name='company_address']" position="attributes">
+            <attribute name="class">col-4 offset-1</attribute>
+        </xpath>
+        <xpath expr="//img[@t-if='company.logo']/.." position="after">
+            <div class="col-4">
+                <t t-set="company_address" t-value="company.partner_id" />
+                <div>
+                    <span t-esc="company_address.name" /><br />
+                    <t t-if="company_address.street_name"><span t-esc="company_address.street_name" /></t>
+                    <t t-if="company_address.street_number">
+                        &amp;nbsp;<span t-esc="company_address.street_number" />
+                    </t>
+                    <t t-if="company_address.street_number2">
+                        &amp;nbsp;<span t-esc="company_address.street_number2" />
+                    </t>
+                    <br />
+                    <t t-if="company_address.l10n_mx_edi_colony">
+                        <span t-esc="company_address.l10n_mx_edi_colony" />
+                    </t>
+                    <t t-if="company_address.zip">&amp;nbsp;<span t-esc="company_address.zip" /></t>
+                    <t t-if="company_address.state_id">&amp;nbsp;<span t-esc="company_address.state_id.code" /></t>
+                    <br />
+                    <t t-if="company_address.country_id"><span t-esc="company_address.country_id.name" /></t>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//h5[@t-field='company.report_header']/../.." position="after">
+            <div class="row">
+                <div class="col-12">
+                    <span><strong>Branch offices:</strong></span><br />
+                    <span>
+                        <strong
+                        >Librería Isef:</strong> Torres Adalid 707, Col. del Valle, C.P.04100, CDMX, Tels. 5554428557/58 libreriaisef2@grupoisef.com.mx
+                    </span>
+                    <br />
+                    <span>
+                        <strong
+                        >Librería Isef Zócalo:</strong> P. Zócalo -Pino Suarez, L12, C.P.06000, CDMX, Tels. 5555223482 libreriaisefzocalo@grupoisef.com.mx
+                    </span>
+                    <br />
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//ul[hasclass('list-inline','pagenumber','float-right','text-center')]" position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+    </template>
+</odoo>

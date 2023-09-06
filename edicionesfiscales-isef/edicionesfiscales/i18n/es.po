@@ -1,0 +1,403 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* edicionesfiscales
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-24 17:40+0000\n"
+"PO-Revision-Date: 2022-08-24 17:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.external_layout_bold
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.external_layout_standard
+msgid "&amp;nbsp;"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_invoice_document
+msgid ""
+"<span class=\"h5\" style=\"color: rgb(102, 102, 102);\">This credit note is "
+"valid for one year. To make it valid from the date of emission.</span>"
+msgstr ""
+"<span class=\"h5\" style=\"color: rgb(102, 102, 102);\">Esta nota de crédito"
+" es válida por un año. Para hacerla válida a partir de la fecha de "
+"emisión.</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_invoice_document
+msgid ""
+"<span class=\"h5\" style=\"color: rgb(102, 102, 102);\">We owe and will "
+"unconditionally pay to the order of Ediciones Fiscales Isef, S.A. in Mexico "
+"City the amount mentioned in the total of the invoice for the merchandise "
+"received to my satisfaction, the lack of timely payment of this promissory "
+"note will bring with it moratorium interest of 2.5% per month.</span>"
+msgstr ""
+"<span class=\"h5\" style=\"color: rgb(102, 102, 102);\">Debemos y pagaremos "
+"incondicionalmente a la orden de Ediciones Fiscales Isef, S.A. en la Ciudad "
+"de México la cantidad mencionada en el total de la factura por las "
+"mercancías recibidas a mi satisfacción, la falta de pago oportuno de este "
+"pagaré traerá consigo intereses moratorios del 2,5% mensual.</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<span> To </span>"
+msgstr "<span> Para </span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.external_layout_standard
+msgid ""
+"<span><strong>Branch offices:</strong></span><br/>\n"
+"                        <span><strong>Librería Isef:</strong> Torres Adalid 707, Col. del Valle, C.P.04100, CDMX, Tels. 5554428557/58 libreriaisef2@grupoisef.com.mx</span><br/>\n"
+"                        <span><strong>Librería Isef Zócalo:</strong> P. Zócalo -Pino Suarez, L12, C.P.06000, CDMX, Tels. 5555223482 libreriaisefzocalo@grupoisef.com.mx</span><br/>"
+msgstr ""
+"<span><strong>Sucursales:</strong></span><br/>\n"
+"                        <span><strong>Librería Isef:</strong> Torres Adalid 707, Col. del Valle, C.P.04100, CDMX, Tels. 5554428557/58 libreriaisef2@grupoisef.com.mx</span><br/>\n"
+"                        <span><strong>Librería Isef Zócalo:</strong> P. Zócalo -Pino Suarez, L12, C.P.06000, CDMX, Tels. 5555223482 libreriaisefzocalo@grupoisef.com.mx</span><br/>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.external_layout_bold
+msgid ""
+"<span><strong>Branch offices:</strong></span><br/>\n"
+"                <span><strong>Librería Isef:</strong> Torres Adalid 707, Col. del Valle, C.P.04100, CDMX, Tels. 5554428557/58 libreriaisef2@grupoisef.com.mx</span><br/>\n"
+"                <span><strong>Librería Isef Zócalo:</strong> P. Zócalo -Pino Suarez, L12, C.P.06000, CDMX, Tels. 5555223482 libreriaisefzocalo@grupoisef.com.mx</span><br/>"
+msgstr ""
+"<span><strong>Sucursales:</strong></span><br/>\n"
+"                        <span><strong>Librería Isef:</strong> Torres Adalid 707, Col. del Valle, C.P.04100, CDMX, Tels. 5554428557/58 libreriaisef2@grupoisef.com.mx</span><br/>\n"
+"                        <span><strong>Librería Isef Zócalo:</strong> P. Zócalo -Pino Suarez, L12, C.P.06000, CDMX, Tels. 5555223482 libreriaisefzocalo@grupoisef.com.mx</span><br/>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid ""
+"<span>Account Statement</span>\n"
+"                            <br/>"
+msgstr ""
+"<span>Estado de cuenta</span>\n"
+"                            <br/>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Amount</span>"
+msgstr "<span>Importe</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<span>Balance</span>"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Currency: </span>"
+msgstr "<span>Moneda: </span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Description</span>"
+msgstr "<span>Descripción</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<span>From </span>"
+msgstr "<span>De </span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Payment</span>"
+msgstr "<span>Pago</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Product or Service Key</span>"
+msgstr "<span>Clave de producto o servicio</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Quantity</span>"
+msgstr "<span>Cantidad</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Total In Letters: ZERO 0/100</span>"
+msgstr "<span>Total en letras: CERO 0/100</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<span>Transaction details</span>"
+msgstr "<span>Detalles de la transacción</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Unit Key</span>"
+msgstr "<span>Clave de unidad</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<span>Unit Price</span>"
+msgstr "<span>Precio unitario</span>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<strong>Balance</strong>"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<strong>CFDI Type: </strong>"
+msgstr "<strong>Tipo de CFDI: </strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<strong>CFDI Use: </strong>"
+msgstr "<strong>Uso CFDI: </strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<strong>Concept</strong>"
+msgstr "<strong>Concepto</strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<strong>Full Invoicing</strong>"
+msgstr "<strong>Facturación completa</strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<strong>Initial Balance</strong>"
+msgstr "<strong>Balance inicial</strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_payment_receipt_document
+msgid "<strong>Payment Amount: </strong>"
+msgstr "<strong>Importe de pago: </strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_saleorder_document
+msgid "<strong>Payment Terms:</strong>"
+msgstr "<strong>Plazos de pago:</strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<strong>Total Expired</strong>"
+msgstr "<strong>Total expirado</strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<strong>Total Payment</strong>"
+msgstr "<strong>Pago total</strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "<strong>Total due</strong>"
+msgstr "<strong>Total vencido</strong>"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Amount"
+msgstr "Monto"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Amount Due"
+msgstr "Monto vencido"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.invoice_report_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Cinthia Avila Arroyo"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Coordinación Librerías"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Date"
+msgstr "Fecha"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_product_category__property_discount_account_id
+msgid "Discount Account"
+msgstr "Cuenta de descuento"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Document #"
+msgstr "Documento #"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Due Date"
+msgstr "Fecha de vencimiento"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__end_date
+msgid "End Date"
+msgstr "Fecha final"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Expired days"
+msgstr "Días vencidos"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__id
+msgid "ID"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_product_product__isbn
+#: model:ir.model.fields,field_description:edicionesfiscales.field_product_template__isbn
+msgid "ISBN"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model:ir.model,name:edicionesfiscales.model_report_edicionesfiscales_report_my_invoices
+msgid "ISEF Invoice Report"
+msgstr "Informe de factura ISEF"
+
+#. module: edicionesfiscales
+#: model:ir.actions.act_window,name:edicionesfiscales.action_invoice_report_wizard
+msgid "Invoice Report"
+msgstr "Informe de factura"
+
+#. module: edicionesfiscales
+#: model:ir.model,name:edicionesfiscales.model_invoice_report
+msgid "Invoice Report Print"
+msgstr "Imprimir informe de factura"
+
+#. module: edicionesfiscales
+#: model:ir.model,name:edicionesfiscales.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento de diario"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__write_date
+msgid "Last Updated on"
+msgstr "Última modificación en"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.external_layout_standard
+msgid "Logo"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__partner_id
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: edicionesfiscales
+#: model:ir.actions.report,name:edicionesfiscales.my_invoices_report_pdf
+msgid "Partner invoices"
+msgstr "Facturas de cliente"
+
+#. module: edicionesfiscales
+#: code:addons/edicionesfiscales/wizards/invoice_report_print.py:0
+#, python-format
+msgid "Please select a partner"
+msgstr "Por favor selecciona un cliente"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.invoice_report_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: edicionesfiscales
+#: model:ir.model,name:edicionesfiscales.model_product_category
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: edicionesfiscales
+#: model:ir.model,name:edicionesfiscales.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: edicionesfiscales
+#: model:ir.model,name:edicionesfiscales.model_mrp_production
+msgid "Production Order"
+msgstr "Orden de producción"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: edicionesfiscales
+#: model:ir.ui.menu,name:edicionesfiscales.account_reports_invoice_report
+msgid "Report Invoice"
+msgstr "Informe de factura"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Sales Executive"
+msgstr "Ejecutivo de ventas"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Sales Team"
+msgstr "Equipo de ventas"
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid "Sincerely."
+msgstr "Atentamente."
+
+#. module: edicionesfiscales
+#: model:ir.model.fields,field_description:edicionesfiscales.field_invoice_report__start_date
+msgid "Start Date"
+msgstr "Fecha inicial"
+
+#. module: edicionesfiscales
+#: model:ir.actions.act_window,name:edicionesfiscales.stock_move_pt
+#: model:ir.model.fields,field_description:edicionesfiscales.field_mrp_production__stock_move_pt
+msgid "Stock Move PT"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_picking
+msgid "Total:"
+msgstr ""
+
+#. module: edicionesfiscales
+#: model_terms:ir.ui.view,arch_db:edicionesfiscales.report_my_invoices
+msgid ""
+"Without further ado, I remain at your service for any questions or "
+"clarifications."
+msgstr "Sin más, quedo a sus órdenes para cualquier duda o aclaración."

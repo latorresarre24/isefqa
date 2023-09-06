@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_move_pt" model="ir.actions.act_window">
+        <field name="name">Stock Move PT</field>
+        <field name="res_model">stock.move</field>
+        <field name="domain">[('production_id', '=', active_id)]</field>
+        <field name="context">{'search_default_production_id': active_id,'default_production_id': active_id}</field>
+        <field name="binding_model_id" ref="mrp.model_mrp_production" />
+    </record>
+</odoo>

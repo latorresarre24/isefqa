@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_payment_receipt_document" inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//span[@t-field='o.partner_id']" position="after">
+            <address
+                style="margin:0px;"
+                t-field="o.partner_id"
+                t-options="{'widget': 'contact', 'fields': ['address'], 'no_marker': True}"
+            />
+            <div style="margin:0px;" t-if="o.partner_id.vat">
+                <t t-esc="o.company_id.country_id.vat_label or 'Tax ID'" />: <span t-field="o.partner_id.vat" />
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-if='o.amount']/.." position="attributes">
+            <attribute name="t-if">False</attribute>
+        </xpath>
+        <xpath expr="//div[@t-if='o.amount']/.." position="after">
+            <div class="row mb64">
+                <div class="col-3 text-center" t-if="o.amount">
+                    <strong>Payment Amount: </strong>
+                    <p t-field="o.amount" />
+                </div>
+                <div class="col-3 text-center" t-if="o.amount">
+                    <strong>CFDI Type: </strong>
+                    <p t-if="o.l10n_mx_edi_cfdi_uuid">P-Pago</p>
+                </div>
+                <div class="col-3 text-center" t-if="o.amount">
+                    <strong>CFDI Use: </strong>
+                    <p t-if="o.l10n_mx_edi_usage" t-esc="o.l10n_mx_edi_usage" />
+                </div>
+                <div class="col-3" t-if="o.ref">
+                    <strong>Memo: </strong><span t-field="o.ref" />
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//table" position="before">
+            <!-- Adding concept from payment -->
+            <p><strong>Concept</strong></p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th name="product_key">
+                            <span>Product or Service Key</span>
+                        </th>
+                        <th name="quantity">
+                            <span>Quantity</span>
+                        </th>
+                        <th name="unit_key">
+                            <span>Unit Key</span>
+                        </th>
+                        <th name="description">
+                            <span>Description</span>
+                        </th>
+                        <th name="unit_price">
+                            <span>Unit Price</span>
+                        </th>
+                        <th name="amount">
+                            <span>Amount</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span>84111506</span></td>
+                        <td><span>1</span></td>
+                        <td><span>ACT</span></td>
+                        <td><span>Payment</span></td>
+                        <td t-esc="0.00" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                        <td t-esc="0.00" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}" />
+                    </tr>
+                    <tr>
+                        <td style="border:0px;" colspan="4">
+                            <span>Currency: </span><t t-esc="o.currency_id.name" />
+                        </td>
+                        <td style="border:0px;">
+                            <span><strong>Subtotal: </strong></span>
+                        </td>
+                        <td
+                            style="border:0px;"
+                            t-esc="0.00"
+                            t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                        />
+                    </tr>
+                    <tr>
+                        <td style="border:0px;" colspan="4">
+                            <span>Total In Letters: ZERO 0/100</span>
+                        </td>
+                        <td style="border:0px;">
+                            <span><strong>Total: </strong></span>
+                        </td>
+                        <td
+                            style="border:0px;"
+                            t-esc="0.00"
+                            t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"
+                        />
+                    </tr>
+                </tbody>
+            </table>
+        </xpath>
+    </template>
+</odoo>

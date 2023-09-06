@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@t-field='doc.partner_id']" position="attributes">
+            <attribute name="t-options">
+                {&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;, &quot;phone&quot;, &quot;address&quot;], &quot;no_marker&quot;: True}
+            </attribute>
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_invoice_id']" position="attributes">
+            <attribute name="t-options">
+                {&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}
+            </attribute>
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_invoice_id']" position="after">
+            <span t-esc="doc.partner_invoice_id.street_name" />
+            <span t-esc="doc.partner_invoice_id.street_number" />
+            <t t-if="doc.partner_invoice_id.l10n_mx_edi_colony">
+                <br />
+                <span t-esc="doc.partner_invoice_id.l10n_mx_edi_colony" />
+            </t>
+            <t t-if="doc.partner_invoice_id.l10n_mx_edi_locality">
+                <br />
+                <span t-esc="doc.partner_invoice_id.l10n_mx_edi_locality" />
+            </t>
+            <span t-esc="doc.partner_invoice_id.zip" />
+            <span t-esc="doc.partner_invoice_id.city" />
+            <span t-esc="doc.partner_invoice_id.state_id.name" /><br />
+            <span t-esc="doc.partner_invoice_id.country_id.name" />
+            <div
+                t-if="doc.partner_invoice_id.phone"
+                t-field="doc.partner_invoice_id"
+                t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"
+            />
+            <div
+                t-if="doc.partner_invoice_id.mobile"
+                t-field="doc.partner_invoice_id"
+                t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;mobile&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"
+            />
+            <t t-if="doc.partner_invoice_id.email"><span t-esc="doc.partner_invoice_id.email" /></t>
+            <t t-if="doc.partner_invoice_id.comment"><br /><span t-esc="doc.partner_invoice_id.comment" /></t>
+            <br />
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_shipping_id']" position="attributes">
+            <attribute name="t-options">
+                {&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;name&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}
+            </attribute>
+        </xpath>
+        <xpath expr="//div[@t-field='doc.partner_shipping_id']" position="after">
+            <span t-esc="doc.partner_shipping_id.street_name" />
+            <span t-esc="doc.partner_shipping_id.street_number" />
+            <t t-if="doc.partner_shipping_id.l10n_mx_edi_colony">
+                <br />
+                <span t-esc="doc.partner_shipping_id.l10n_mx_edi_colony" />
+            </t>
+            <t t-if="doc.partner_shipping_id.l10n_mx_edi_locality">
+                <br />
+                <span t-esc="doc.partner_shipping_id.l10n_mx_edi_locality" />
+            </t>
+            <span t-esc="doc.partner_shipping_id.zip" />
+            <span t-esc="doc.partner_shipping_id.city" />
+            <span t-esc="doc.partner_shipping_id.state_id.name" /><br />
+            <span t-esc="doc.partner_shipping_id.country_id.name" />
+            <div
+                t-if="doc.partner_shipping_id.phone"
+                t-field="doc.partner_shipping_id"
+                t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"
+            />
+            <div
+                t-if="doc.partner_shipping_id.mobile"
+                t-field="doc.partner_shipping_id"
+                t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;mobile&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"
+            />
+            <t t-if="doc.partner_shipping_id.email"><span t-esc="doc.partner_shipping_id.email" /></t>
+            <t t-if="doc.partner_shipping_id.comment"><br /><span t-esc="doc.partner_shipping_id.comment" /></t>
+            <br />
+        </xpath>
+        <xpath expr="//div[@id='informations']" position="inside">
+            <div t-if="doc.payment_term_id" class="col-auto col-3 mw-100 mb-2">
+                <strong>Payment Terms:</strong>
+                <p class="m-0" t-field="doc.payment_term_id" />
+            </div>
+        </xpath>
+    </template>
+</odoo>

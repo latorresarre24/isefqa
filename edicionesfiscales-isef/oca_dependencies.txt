@@ -1,0 +1,8 @@
+enterprise git@github.com:Vauxoo/enterprise.git
+mexico git@git.vauxoo.com:vauxoo/mexico.git
+edi-document git@git.vauxoo.com:vauxoo/edi-document.git
+mexico-document git@git.vauxoo.com:vauxoo/mexico-document.git
+design-themes git@github.com:odoo/design-themes.git
+sh-tools git@git.vauxoo.com:vauxoo/sh-tools.git
+partner-contact git@github.com:Vauxoo/partner-contact.git
+stock-logistics-workflow git@github.com:Vauxoo/stock-logistics-workflow.git
