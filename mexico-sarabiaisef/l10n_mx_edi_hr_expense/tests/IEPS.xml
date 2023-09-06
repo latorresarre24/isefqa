@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cfdi:Comprobante
+    xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    Version="3.3"
+    Serie="GC1T"
+    Folio="4251"
+    Fecha="2021-03-30T13:16:40"
+    Sello="Ho7Ehkkyb4SY1QZiGiHG0A+U6Nqu9+4ZvQmyjA30FtUII0/uZu3Herl9DCL10RkUNgEBz+Ja2C7DbKQnOMtZ00z7tyFuOWJDZQStmNlxaKR1RY3ohU9FmCR9uSX4hxr23ilSa3YDSHnEPb+hJFSjQX8aeUg8wQms494KQcfU6GvBqKO+2s8pJ3qWU8PWBgxDtg38UQ/DK/ETTlSQzGC3roFbgvDudaGoD1NM6B8oOe/bN7+7TKiGpau/EHgWvAi/4V6FQfG11J9hH57l6Wy7/3BM+K/TARbvXKl1UW2cIB1WlzARQML1yQw/AX5cpG6Yr8OU5jkc1rNN89TX1SWTLg=="
+    NoCertificado="00001000000501162679"
+    Certificado="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"
+    SubTotal="72.39"
+    Descuento="7.00"
+    TipoCambio="1"
+    Moneda="MXN"
+    Total="70.00"
+    TipoDeComprobante="I"
+    FormaPago="28"
+    MetodoPago="PUE"
+    LugarExpedicion="77710"
+    xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd"
+>
+    <cfdi:Emisor Rfc="EKU9003173C9" Nombre="Emisor" RegimenFiscal="601" />
+    <cfdi:Receptor Rfc="BBB8110164B0" Nombre="Receptor" UsoCFDI="G03" />
+    <cfdi:Conceptos>
+        <cfdi:Concepto
+            ClaveProdServ="50202601"
+            NoIdentificacion="7501013101331"
+            Cantidad="1.00"
+            ClaveUnidad="C62"
+            Unidad="Uno"
+            Descripcion="NECTAR MANZANA LB 473ML"
+            ValorUnitario="16.00"
+            Importe="16.00"
+            Descuento="3.50"
+        >
+            <cfdi:Impuestos>
+                <cfdi:Traslados><cfdi:Traslado
+                        Base="12.50"
+                        Impuesto="002"
+                        TipoFactor="Tasa"
+                        TasaOCuota="0.000000"
+                        Importe="0.00"
+                    /></cfdi:Traslados>
+            </cfdi:Impuestos>
+        </cfdi:Concepto>
+        <cfdi:Concepto
+            ClaveProdServ="50202300"
+            NoIdentificacion="7501013101348"
+            Cantidad="1.00"
+            ClaveUnidad="C62"
+            Unidad="Uno"
+            Descripcion="NECTAR MANGO LB 473ML"
+            ValorUnitario="16.00"
+            Importe="16.00"
+            Descuento="3.50"
+        >
+            <cfdi:Impuestos>
+                <cfdi:Traslados>
+                    <cfdi:Traslado
+                        Base="12.50"
+                        Impuesto="002"
+                        TipoFactor="Tasa"
+                        TasaOCuota="0.000000"
+                        Importe="0.00"
+                    />
+                </cfdi:Traslados>
+            </cfdi:Impuestos>
+        </cfdi:Concepto>
+        <cfdi:Concepto
+            ClaveProdServ="50181900"
+            NoIdentificacion="7501000133338"
+            Cantidad="1.00"
+            ClaveUnidad="C62"
+            Unidad="Uno"
+            Descripcion="PASTISETA MARINELA 75 GR"
+            ValorUnitario="23.15"
+            Importe="23.15"
+        >
+            <cfdi:Impuestos>
+                <cfdi:Traslados>
+                    <cfdi:Traslado
+                        Base="25.00"
+                        Impuesto="002"
+                        TipoFactor="Tasa"
+                        TasaOCuota="0.000000"
+                        Importe="0.00"
+                    />
+                    <cfdi:Traslado
+                        Base="23.15"
+                        Impuesto="003"
+                        TipoFactor="Tasa"
+                        TasaOCuota="0.080000"
+                        Importe="1.85"
+                    />
+                </cfdi:Traslados>
+            </cfdi:Impuestos>
+        </cfdi:Concepto>
+        <cfdi:Concepto
+            ClaveProdServ="50201708"
+            NoIdentificacion="A20"
+            Cantidad="1.00"
+            ClaveUnidad="C62"
+            Unidad="Uno"
+            Descripcion="AMERICANO 20 OZ GDE"
+            ValorUnitario="17.24"
+            Importe="17.24"
+        >
+            <cfdi:Impuestos>
+                <cfdi:Traslados>
+                    <cfdi:Traslado
+                        Base="17.24"
+                        Impuesto="002"
+                        TipoFactor="Tasa"
+                        TasaOCuota="0.160000"
+                        Importe="2.76"
+                    />
+                </cfdi:Traslados>
+            </cfdi:Impuestos>
+        </cfdi:Concepto>
+    </cfdi:Conceptos>
+    <cfdi:Impuestos TotalImpuestosTrasladados="4.61">
+        <cfdi:Traslados>
+            <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Importe="0.00" />
+            <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="2.76" />
+            <cfdi:Traslado Impuesto="003" TipoFactor="Tasa" TasaOCuota="0.080000" Importe="1.85" />
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
+    <cfdi:Complemento>
+        <tfd:TimbreFiscalDigital
+            xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital"
+            xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd"
+            Version="1.1"
+            UUID="773D32FD-C72E-49A1-BA1F-7FBA513DF170"
+            FechaTimbrado="2021-03-30T13:16:42"
+            RfcProvCertif="FIN1203015JA"
+            SelloSAT="vWu5z2SYKTxZpiPQzh2q0VljavJZCY5nq/FR9IZbVZksrzWY0lWnovOaCtaprbb0hJwC2ARqGifGh3zqZFQ9dxcTOuBgehyt8/qcL/52ZgQWL9OkFB5eCMiSx5pJfUB6vbZeiWKtBDpXI7vVq2Th08lrHD4aBywEekf4VyOl/F1r4B7EXi78RX517r8r4C1HVwJkOiOg95eWsf6O7dVVbn1k+uKXTTLI3aFCFH8Qs3uTSqmAJvNZq3B/ZlA7+0qTf0J4Eklg6wdqSVIp4ihbcecinZiec809SRE1wcKGt/uwVUGvP/8s2bZR27qAI/Zzp4vWMHgZ9RnK8sj0oU3CVw=="
+            SelloCFD="Ho7Ehkkyb4SY1QZiGiHG0A+U6Nqu9+4ZvQmyjA30FtUII0/uZu3Herl9DCL10RkUNgEBz+Ja2C7DbKQnOMtZ00z7tyFuOWJDZQStmNlxaKR1RY3ohU9FmCR9uSX4hxr23ilSa3YDSHnEPb+hJFSjQX8aeUg8wQms494KQcfU6GvBqKO+2s8pJ3qWU8PWBgxDtg38UQ/DK/ETTlSQzGC3roFbgvDudaGoD1NM6B8oOe/bN7+7TKiGpau/EHgWvAi/4V6FQfG11J9hH57l6Wy7/3BM+K/TARbvXKl1UW2cIB1WlzARQML1yQw/AX5cpG6Yr8OU5jkc1rNN89TX1SWTLg=="
+            NoCertificadoSAT="00001000000505750848"
+        />
+    </cfdi:Complemento>
+</cfdi:Comprobante>

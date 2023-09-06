@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mx_edi_cancellation_complement_invoice_form" model="ir.ui.view">
+        <field name="name">view.mx.edi.cancellation.complement.invoice.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="l10n_mx_edi.view_l10n_mx_edi_invoice_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_mx_edi_origin']" position="before">
+                <field name="l10n_mx_edi_cancellation"
+                    attrs="{'invisible':['|', ('posted_before', '=', False), ('country_code', '!=', 'MX')]}"/>
+                <label for="l10n_mx_edi_cancellation_date" attrs="{'invisible':['|', ('edi_state', '!=', 'cancelled'), ('l10n_mx_edi_cancellation_date', '=', False)]}"/>
+                <div attrs="{'invisible':['|', ('edi_state', '!=', 'cancelled'), ('l10n_mx_edi_cancellation_date', '=', False)]}">
+                    <field name="l10n_mx_edi_cancellation_date" class="oe_inline"/>&amp;nbsp;
+                    <field name="l10n_mx_edi_cancellation_time" class="oe_inline"/>
+                </div>
+                <field name="date_cancel" attrs="{'invisible':[('date_cancel', '=', False)]}"/>
+            </xpath>
+            <xpath expr="//button[@name='button_cancel']" position="after">
+                <button
+                    name="button_cancel_with_reversal"
+                    string="Cancel Entry With Reversal"
+                    type="object"
+                    groups="l10n_mx_edi_cancellation.allow_cancel_with_reversal_move"
+                    attrs="{'invisible' : ['|', '|', ('id', '=', False), ('state', '!=', 'posted'), ('payment_state', 'in', ('in_payment', 'paid', 'reversed'))]}"
+                    confirm="Are you sure you want to proceed ? If this invoice is out period, a reversal will be generated."
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,2 @@
+enterprise git@github.com:odoo/enterprise.git
+account-payment-split git@git.vauxoo.com:vauxoo/account-payment-split.git

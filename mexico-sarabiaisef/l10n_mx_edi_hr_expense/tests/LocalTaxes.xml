@@ -1,0 +1,85 @@
+<cfdi:Comprobante
+    xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+    xmlns:implocal="http://www.sat.gob.mx/implocal"
+    xmlns:terceros="http://www.sat.gob.mx/terceros"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    Certificado="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"
+    Fecha="2021-12-08T06:51:36"
+    Folio="121667"
+    FormaPago="04"
+    LugarExpedicion="22210"
+    MetodoPago="PUE"
+    Moneda="MXN"
+    NoCertificado="00001000000408525420"
+    Sello="VUZulGxilvi/q0kRsYYviVg+0SMfQc8rDRtsxGP+wOeeaj/0BFEvfxHZe+S+h45zHVZlnVrDzn3cB74TfqU+Yb0wOAcYkHZec4m10Ov05cTQVoWqn5JKl03aGufmTSwmb8ftegBah8XbBWW9S1q44TwlGj5PbJoR+urQaYVQzT6rd9MOrp/Twb0fKQy3KUFciLEYDHJKVNU6o2JsRblQR2LKN3nbzWu7PgATWu629EIJL8HAAWZq1jGLE+9ngwZnFNBDAJhrdBIZOqCQ43+KaE31DcuX3fxUYyNsy8iV1A3GzBzyzXkbkJXgchWs0lbrBBy361fQ9hdrFbQJE7ZXvg=="
+    Serie="CETII"
+    SubTotal="2323.68"
+    TipoCambio="1"
+    TipoDeComprobante="I"
+    Total="2625.76"
+    Version="3.3"
+    xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd  http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd http://www.sat.gob.mx/terceros http://www.sat.gob.mx/sitio_internet/cfd/terceros/terceros11.xsd"
+>
+    <cfdi:Emisor Nombre="Emisor" RegimenFiscal="601" Rfc="EKU9003173C9" />
+    <cfdi:Receptor Nombre="Receptor" Rfc="EKU9003173C8" UsoCFDI="G03" />
+    <cfdi:Conceptos>
+        <cfdi:Concepto
+            Cantidad="1.00"
+            ClaveProdServ="90111500"
+            ClaveUnidad="E48"
+            Descripcion="RENTA HABITACION"
+            Importe="1161.84"
+            NoIdentificacion="HAB"
+            Unidad="NA"
+            ValorUnitario="1161.84"
+        >
+          <cfdi:Impuestos>
+            <cfdi:Traslados>
+              <cfdi:Traslado Base="1161.84" Importe="92.95" Impuesto="002" TasaOCuota="0.080000" TipoFactor="Tasa" />
+            </cfdi:Traslados>
+          </cfdi:Impuestos>
+        </cfdi:Concepto>
+        <cfdi:Concepto
+            Cantidad="1.00"
+            ClaveProdServ="90111500"
+            ClaveUnidad="E48"
+            Descripcion="RENTA HABITACION"
+            Importe="1161.84"
+            NoIdentificacion="HAB"
+            Unidad="NA"
+            ValorUnitario="1161.84"
+        >
+          <cfdi:Impuestos>
+            <cfdi:Traslados>
+              <cfdi:Traslado Base="1161.84" Importe="92.95" Impuesto="002" TasaOCuota="0.080000" TipoFactor="Tasa" />
+            </cfdi:Traslados>
+          </cfdi:Impuestos>
+        </cfdi:Concepto>
+    </cfdi:Conceptos>
+    <cfdi:Impuestos TotalImpuestosTrasladados="185.90">
+        <cfdi:Traslados>
+          <cfdi:Traslado Importe="185.90" Impuesto="002" TasaOCuota="0.080000" TipoFactor="Tasa" />
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
+    <cfdi:Complemento>
+        <implocal:ImpuestosLocales
+            xmlns:implocal="http://www.sat.gob.mx/implocal"
+            TotaldeRetenciones="0.00"
+            TotaldeTraslados="116.18"
+            version="1.0"
+        >
+          <implocal:TrasladosLocales ImpLocTrasladado="ISH" Importe="116.18" TasadeTraslado="5.00" />
+        </implocal:ImpuestosLocales>
+        <tfd:TimbreFiscalDigital
+            xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital"
+            FechaTimbrado="2021-12-08T08:56:37"
+            NoCertificadoSAT="00001000000505430144"
+            RfcProvCertif="SEF100616AD2"
+            SelloCFD="VUZulGxilvi/q0kRsYYviVg+0SMfQc8rDRtsxGP+wOeeaj/0BFEvfxHZe+S+h45zHVZlnVrDzn3cB74TfqU+Yb0wOAcYkHZec4m10Ov05cTQVoWqn5JKl03aGufmTSwmb8ftegBah8XbBWW9S1q44TwlGj5PbJoR+urQaYVQzT6rd9MOrp/Twb0fKQy3KUFciLEYDHJKVNU6o2JsRblQR2LKN3nbzWu7PgATWu629EIJL8HAAWZq1jGLE+9ngwZnFNBDAJhrdBIZOqCQ43+KaE31DcuX3fxUYyNsy8iV1A3GzBzyzXkbkJXgchWs0lbrBBy361fQ9hdrFbQJE7ZXvg=="
+            SelloSAT="M9GaLhuWuqGkraT1hAz2UBqMWx4e666wSYELor+S5Qq84K5X4ewDGVymBu+F3Okr5Hm5eND8nnLiloN11jm8ANHEHU0B+mscVtwUbyTu67JPFmBLNL82z25IYbeAt8NZB1pmyPtgFCmBlcccCiTOvyx2JLg/GtBcxr3BGFkraOlRyLekQ3+eXKhNu+ygTw+FN1KAOPdz4OGB2rQAeJcOAJocoB/V1elQ/m+MLYU3OVn4mXhrtZp5skERIGR4dJoXiyQLJ60lXOWHcfrl09CaxljrzgjaoVjIXhpDVCZlnruVMoH2xivciYcxYX+yC4TwLiUwvavWqPHjUI2tWjGUEA=="
+            UUID="D80FC566-9963-462E-A677-FAF61959365F"
+            Version="1.1"
+            xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd"
+        />
+    </cfdi:Complemento>
+</cfdi:Comprobante>

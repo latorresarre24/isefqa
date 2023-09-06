@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_invoice_apply_advances" model="ir.ui.view">
+        <field name="name">view.invoice.apply.advances</field>
+        <field name="model">invoice.apply.advances</field>
+        <field name="arch" type="xml">
+            <form string="Invoice Advances">
+                <p class="oe_grey">
+                    Indicates the advance amount to apply on the invoice.
+                </p>
+                <group>
+                    <field name="advance_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="partner_id" invisible="1"/>
+                            <field name="advance_id"
+                                domain="[('amount_available', '>=', 0), ('partner_id', '=', partner_id)]"
+                                options="{'no_create': True, 'no_open': True}"/>
+                            <field name="amount" sum="Total"/>
+                            <field name="amount_available" sum="Total"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button name="apply_advances" string="Apply Advance" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_invoice_apply_advances" model="ir.actions.act_window">
+        <field name="name">Invoice Advances</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">invoice.apply.advances</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

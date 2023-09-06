@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mx_edi_advance_invoice_form" model="ir.ui.view">
+        <field name="name">mx.edi.advance.invoice.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="l10n_mx_edi.view_l10n_mx_edi_invoice_form_inherit"/>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="l10n_mx_edi_amount_advances" attrs="{'invisible': ['|', ('state', 'not in', ('draft')), ('l10n_mx_edi_amount_advances', '=', 0)]}"/>
+                <field name="l10n_mx_edi_amount_residual_advances" attrs="{'invisible': ['|', ('state', 'not in', ('draft')), ('l10n_mx_edi_amount_advances', '=', 0)]}"/>
+            </field>
+            <field name="l10n_mx_edi_origin" position="after">
+                <field name="l10n_mx_edi_is_advance" invisible="1"/>
+                <field name="l10n_mx_edi_amount_available"
+                    attrs="{'invisible': ['|', ('payment_state', 'not in', ('paid', 'in_payment')), ('l10n_mx_edi_is_advance', '=', False)]}"/>
+            </field>
+            <button name="preview_invoice" position="after">
+            </button>
+            <xpath expr="//header" position="after">
+                <div groups="account.group_account_invoice" class="alert alert-info" role="alert" style="margin-bottom:0px;"
+                    attrs="{'invisible': ['|', '|', ('l10n_mx_edi_has_outstanding_advances', '=', False), ('state', 'not in', ('draft')), ('l10n_mx_edi_is_advance', '=', True)]}">
+                    You have <bold><a class="alert-link">outstanding advances</a></bold> for this customer. <button name="%(action_view_invoice_apply_advances)d" type="action" class="oe_link" string="Apply/Edit Advances" groups="account.group_account_invoice"/>
+                </div>
+                <field name="l10n_mx_edi_has_outstanding_advances" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_l10n_mx_edi_advance_form" model="ir.ui.view">
+        <field name="name">view.l10n_mx_edi.advance.form</field>
+        <field name="model">l10n_mx_edi.advance</field>
+        <field name="arch" type="xml">
+            <form string="Advances">
+                <sheet string="Advances">
+                    <group>
+                        <group>
+                            <field name="is_historical"/>
+                            <field name="advance_id"
+                                options="{'no_create': True, 'no_edit': True}"
+                                attrs="{'required': [('is_historical', '=', False)]}"/>
+                            <field name="uuid" attrs="{'required': [('advance_id', '=', False)], 'invisible': [('advance_id', '!=', False)]}"/>
+                            <field name="name" attrs="{'required': [('advance_id', '=', False)], 'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="advance_date" attrs="{'invisible': [('advance_id', '!=', False)]}"/>
+                            <field name="date" attrs="{'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="partner_id" attrs="{'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="partner_historical_id"
+                                widget="res_partner_many2one"
+                                string="Partner"
+                                options='{"always_reload": True, "no_quick_create": True}'
+                                attrs="{'required': [('advance_id', '=', False)], 'invisible': [('advance_id', '!=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="state" attrs="{'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="advance_subtotal" attrs="{'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="advance_taxes_amount" attrs="{'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="advance_total" attrs="{'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="advance_historical_total"
+                                string="Advance Total"
+                                attrs="{'required': [('advance_id', '=', False)], 'invisible': [('advance_id', '!=', False)]}"/>
+                            <field name="amount_available"/>
+                            <field name="currency_id" options="{'no_create': True, 'no_open': True}"
+                            attrs="{'invisible': [('advance_id', '=', False)]}"/>
+                            <field name="currency_historical_id"
+                                options="{'no_create': True, 'no_open': True}"
+                                string="Currency"
+                                attrs="{'required': [('advance_id', '=', False)], 'invisible': [('advance_id', '!=', False)]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="invoice_ids" nolabel="1"
+                                groups="base.group_no_one">
+                            <tree editable="bottom" create="false">
+                                <field name="invoice_id" options="{'no_create': True, 'no_open': True}" readonly="1"/>
+                                <field name="amount" sum="Total" readonly="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_l10n_mx_edi_advance_tree" model="ir.ui.view">
+        <field name="name">view.l10n_mx_edi.advance.tree</field>
+        <field name="model">l10n_mx_edi.advance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="advance_id"/>
+                <field name="advance_total"/>
+                <field name="amount_available"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_l10n_mx_edi_advance_search" model="ir.ui.view">
+        <field name="name">view.l10n_mx_edi.advance.search</field>
+        <field name="model">l10n_mx_edi.advance</field>
+        <field name="arch" type="xml">
+            <search string="Advance">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <separator/>
+                <filter name="available" string="Available" domain="[('amount_available','>', 0)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Partner" name="partner" context="{'group_by': 'partner_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_l10n_mx_edi_advances" model="ir.actions.act_window">
+        <field name="name">Advances</field>
+        <field name="res_model">l10n_mx_edi.advance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="l10n_mx_edi_advances"
+        name="Advances" parent='account.menu_finance_receivables' sequence="50"
+        action='action_l10n_mx_edi_advances' />
+
+</odoo>

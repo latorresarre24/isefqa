@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_mx_edi_advance_detail,access_l10n_mx_edi_advance_detail,model_l10n_mx_edi_advance_detail,,1,1,1,1
+access_l10n_mx_edi_advance,access_l10n_mx_edi_advance,model_l10n_mx_edi_advance,,1,1,1,1
+access_invoice_apply_advances,access_invoice_apply_advances,model_invoice_apply_advances,,1,1,1,1
+access_invoice_apply_advances_detail,access_invoice_apply_advances_detail,model_invoice_apply_advances_detail,,1,1,1,1

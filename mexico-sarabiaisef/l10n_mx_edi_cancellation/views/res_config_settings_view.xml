@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_reversal_config_settings" model="ir.ui.view">
+        <field name="name">cancellation with reversed entry</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='invoicing_settings']" position="after">
+                <h2>Cancellation Settings</h2>
+                <div class="row mt16 o_settings_container" id="mx_cancellation_settings">
+                    <div class="col-12 col-lg-6 o_setting_box" title="Default journals.">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Reversals</span>
+                            <div class="text-muted">
+                                Configure default journals for reversals.
+                            </div>
+                            <div class="content-group">
+                                <div class="row">
+                                    <label for="l10n_mx_edi_reversal_customer_journal_id" class="col-md-3 o_light_label"/>
+                                    <field name="l10n_mx_edi_reversal_customer_journal_id" class="oe_inline"/>
+                                </div>
+                                <div class="row">
+                                    <label for="l10n_mx_edi_reversal_supplier_journal_id" class="col-md-3 o_light_label"/>
+                                    <field name="l10n_mx_edi_reversal_supplier_journal_id" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

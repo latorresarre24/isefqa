@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="tax_withholding_template">
+        <!--CveRetenc is always 14. It is the retention type 'dividendos'. For now we are supporting just this type of retention-->
+        <retenciones:Retenciones
+            xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd"
+            t-att-Cert="certificate_key"
+            t-att-CveRetenc="cve_withholding"
+            t-att-DescRetenc="desc_withholding"
+            t-att-FechaExp="cfdi_date"
+            t-att-FolioInt="format_string(folio_number, 40)"
+            t-att-NumCert="certificate_number"
+            Version="1.0"
+            Sello=""
+        >
+            <retenciones:Emisor
+                t-att-NomDenRazSocE="format_string(supplier.name, 254)"
+                t-att-RFCEmisor="supplier.vat"
+            />
+            <!--Receptor-->
+            <retenciones:Receptor
+                t-att-Nacionalidad="'Nacional' if customer.country_id.code == 'MX' else 'Extranjero'"
+            >
+                <t t-if="customer.country_id.code == 'MX'">
+                    <retenciones:Nacional
+                        t-att-RFCRecep="customer_rfc"
+                        t-att-CURPR="customer.l10n_mx_edi_curp"
+                        t-att-NomDenRazSocR="format_string(customer.name, 254)"
+                    />
+                </t>
+                <t t-else="">
+                    <retenciones:Extranjero
+                        t-att-NomDenRazSocR="format_string(customer.name, 254)"
+                        t-att-NumRegIdTrib="customer_rfc"
+                    />
+                </t>
+            </retenciones:Receptor>
+            <retenciones:Periodo
+                t-att-MesIni="record.date.month"
+                t-att-MesFin="record.date.month"
+                t-att-Ejerc="record.date.year"
+            />
+            <retenciones:Totales
+                t-att-montoTotOperacion="format_float(amount, 2)"
+                t-att-montoTotGrav="format_float(amount or 0, 2)"
+                t-att-montoTotExent="'0.0'"
+                t-att-montoTotRet="format_float(tax_withholding_amount or 0, 2)"
+            >
+                <retenciones:ImpRetenidos
+                    t-att-BaseRet="format_float(amount, 2)"
+                    t-att-Impuesto="tax_withholding"
+                    t-att-montoRet="format_float(tax_withholding_amount, 2)"
+                    t-att-TipoPagoRet="tax_withholding_type"
+                />
+            </retenciones:Totales>
+            <retenciones:Complemento>
+                <pagosaextranjeros:Pagosaextranjeros
+                    xmlns:pagosaextranjeros="http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros"
+                    xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros/pagosaextranjeros.xsd"
+                    Version="1.0"
+                    EsBenefEfectDelCobro="NO"
+                >
+                    <pagosaextranjeros:NoBeneficiario
+                        ConceptoPago="3"
+                        t-att-DescripcionConcepto="withholding_concept"
+                        t-att-PaisDeResidParaEfecFisc="customer.country_id.code"
+                    />
+                </pagosaextranjeros:Pagosaextranjeros>
+            </retenciones:Complemento>
+        </retenciones:Retenciones>
+    </template>
+</odoo>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="l10n_mx_hr_expense.ExpenseChecks" owl="1">
+        <div class="btn">
+            <a role="button" tabindex="0" class="js_expense_checks">
+                <t t-if="!messages">
+                    <p class="text-info"><i class="fa fa-info-circle" /> No checks performed yet</p>
+                </t>
+                <p t-if="failed or succeeded" t-on-click="_onClickSucceeded" class="border shadow p-2">
+                    <t t-if="failed">
+                        <span class="text-danger mr-2"><i class="fa fa-times" /> <t
+                                t-esc="failed"
+                            /> Failed checks</span>
+                    </t>
+                    <t t-if="failed and succeeded">
+                    <span class="text-muted mx-2">|</span>
+                    </t>
+                    <t t-if="succeeded">
+                        <span class="text-success"><i class="fa fa-check" /> <t
+                                t-esc="succeeded"
+                            /> Succesfull checks</span>
+                    </t>
+                </p>
+            </a>
+        </div>
+    </t>
+    <t t-name="l10n_mx_hr_expense.ExpenseChecksModal" owl="1">
+        <div
+            class="modal fade expense_check_modal"
+            id="ExpenseChecksModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="ExpenseChecksModalLabel"
+            aria-hidden="true"
+        >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ExpenseChecksModalLabel">Checks</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" />
+                </button>
+            </div>
+            <div class="modal-body">
+                <t t-raw="rendered_view" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+    </t>
+</templates>

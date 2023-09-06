@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_purchase_upload_attachment" name="Portal: Upload Attachments to Purchase Order" inherit_id="purchase.purchase_order_portal_content">
+        <xpath expr="//div[@id='informations']" position="after">
+             <t t-if="upload_errors">
+                <div class="alert alert-danger" role="alert" style="margin-bottom:0px;">
+                    <strong>Error Updating the CFDI</strong>
+                    <t t-foreach="upload_errors" t-as="error">
+                        <t t-esc="error"/>
+                        <br/>
+                    </t>
+                    <br/><br/>
+                    If you need assistance please contact us.
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[last()]" position="after">
+            <t t-set="partner_id" t-value="order.partner_id"/>
+            <div class="panel-body">
+                <form t-attf-action="/purchase/order_attachments/{{order.id}}"
+                    class="s_upload_attachments container-fluid mt32"
+                    data-success_page="/purchase/order-attachment-thank-you"
+                    enctype="multipart/form-data"
+                    method="post"
+                    t-att-data-form_field_order_id="order.id"
+                    t-att-data-model_name="order.id">
+                    <t t-if="not upload_success">
+                        <div class="form-group form-field o_website_form_custom o_website_form_required_custom col-6">
+                            <label class="control-label" for="xml">XML</label>
+                            <input accept=".xml" class="form-control o_website_form_input" name="xml" required="" type="file"/>
+                        </div>
+                        <div class="form-group form-field o_website_form_custom o_website_form_required_custom col-6">
+                            <label class="control-label" for="pdf">PDF</label>
+                            <input accept=".pdf" class="form-control o_website_form_input" name="pdf" required="" type="file"/>
+                        </div>
+                        <div t-att-class="'form-group form-field o_website_form_custom o_website_form_required_custom col-6' if partner_id.l10n_mx_edi_is_indirect else 'form-group form-field o_website_form_custom col-6'">
+                            <label class="control-label" for="purchase_order">Purchase Order</label>
+                            <input class="form-control o_website_form_input"
+                                name="purchase_order"
+                                t-att-required="'' if partner_id.l10n_mx_edi_is_indirect else False"
+                                type="file"/>
+                        </div>
+                        <div t-att-class="'form-group form-field o_website_form_custom o_website_form_required_custom col-6' if partner_id.l10n_mx_edi_is_indirect else 'form-group form-field o_website_form_custom col-6'">
+                            <label class="control-label" for="ack_receipt">Acknowledgment of receipt</label>
+                            <input class="form-control o_website_form_input"
+                                name="receipt"
+                                t-att-required="'' if partner_id.l10n_mx_edi_is_indirect else False"
+                                type="file"/>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 text-left nopadding">
+                                <button class="btn_upload_attachments btn btn-primary btn-lg nomargin">Upload</button>
+                                <span id="o_website_form_result"/>
+                            </div>
+                        </div>
+                        <input name="csrf_token" t-att-value="request.csrf_token()" type="hidden"/>
+                    </t>
+                </form>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,315 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#     * l10n_mx_edi_cancellation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-06 23:56+0000\n"
+"PO-Revision-Date: 2022-12-06 23:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_edi_cancellation
+#: model_terms:ir.ui.view,arch_db:l10n_mx_edi_cancellation.view_account_payment_form_inh_l10n_mx_cancellation
+#: model_terms:ir.ui.view,arch_db:l10n_mx_edi_cancellation.view_mx_edi_cancellation_complement_invoice_form
+msgid "&amp;nbsp;"
+msgstr ""
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_move.py:0
+#, python-format
+msgid "A cancellation of the EDI has been requested."
+msgstr "Una cancelación del documento EDI fue solicitada."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid "A delay of 2 hours has to be respected before to cancel"
+msgstr "Un retraso de 2 horas tiene que ser respetado antes de cancelar"
+
+#. module: l10n_mx_edi_cancellation
+#: model_terms:ir.ui.view,arch_db:l10n_mx_edi_cancellation.view_mx_edi_cancellation_complement_invoice_form
+msgid ""
+"Are you sure you want to proceed ? If this invoice is out period, a reversal"
+" will be generated."
+msgstr ""
+"¿ Esta seguro de continuar ? Si esta factura esta fuera de periodo, se generará "
+"un reverso."
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_bank_statement_line__date_cancel
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_move__date_cancel
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_payment__date_cancel
+msgid "Cancel Date"
+msgstr "Fecha de cancelación"
+
+#. module: l10n_mx_edi_cancellation
+#: model_terms:ir.ui.view,arch_db:l10n_mx_edi_cancellation.view_mx_edi_cancellation_complement_invoice_form
+msgid "Cancel Entry With Reversal"
+msgstr "Cancelar con reverso"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_bank_statement_line__l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_move__l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_payment__l10n_mx_edi_cancellation
+msgid "Cancellation Case"
+msgstr "Caso cancelación"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_bank_statement_line__l10n_mx_edi_cancellation_date
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_move__l10n_mx_edi_cancellation_date
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_payment__l10n_mx_edi_cancellation_date
+msgid "Cancellation Date"
+msgstr "Fecha de cancelación"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_bank_statement_line__l10n_mx_edi_cancellation_time
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_move__l10n_mx_edi_cancellation_time
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_payment__l10n_mx_edi_cancellation_time
+msgid "Cancellation Time"
+msgstr "Hora de cancelación"
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid "Cancelling got an error"
+msgstr "Se obtuvo un error al cancelar"
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid "Code : %s"
+msgstr "Código : %s"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model,name:l10n_mx_edi_cancellation.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model,name:l10n_mx_edi_cancellation.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_config_settings__l10n_mx_edi_reversal_customer_journal_id
+msgid "Customer Journal"
+msgstr "Diario de ventas"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_edi_format__display_name
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_payment__display_name
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model,name:l10n_mx_edi_cancellation.model_account_edi_format
+msgid "EDI format"
+msgstr "Formato EDI"
+
+#. module: l10n_mx_edi_cancellation
+#: model:res.groups,name:l10n_mx_edi_cancellation.allow_cancel_with_reversal_move
+msgid "Enable cancellation with reversed entry"
+msgstr "Habilitar cancelación con póliza de reverso"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_edi_format__id
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_payment__id
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_config_settings__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_res_company__l10n_mx_edi_reversal_customer_journal_id
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_res_config_settings__l10n_mx_edi_reversal_customer_journal_id
+msgid ""
+"If set, this journal will be used on reversals for customer invoices out of "
+"period."
+msgstr ""
+"Si se asigna, este diario será utilizado en los reversos de facturas de "
+"cliente fuera del periodo."
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_res_company__l10n_mx_edi_reversal_supplier_journal_id
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_res_config_settings__l10n_mx_edi_reversal_supplier_journal_id
+msgid ""
+"If set, this journal will be used on reversals for vendo bills out of "
+"period."
+msgstr ""
+"Si se asigna, este diario será utilizado en los reversos de facturas de "
+"proveedor fuera del periodo."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_move.py:0
+#, python-format
+msgid "In order to allow cancel, please define a correct cancellation case."
+msgstr ""
+"Para permitir la cancelación, por favor defina correctamente el caso de "
+"cancelación."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_move.py:0
+#, python-format
+msgid "In order to allow cancel, please define the cancellation case."
+msgstr ""
+"Para permitir la cancelación, por favor defina un caso de cancelación."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_move.py:0
+#, python-format
+msgid ""
+"In order to use this option, the SAT status must be cancelled (for "
+"cancellation cases 02, 03 and 04)."
+msgstr ""
+"Para utilizar esta opción, el estado en el SAT debe ser cancelado "
+"(para casos de cancelación 02, 03 y 04)."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_move.py:0
+#, python-format
+msgid "Invoice must be in draft or open state in order to be cancelled."
+msgstr "La factura debe estar en borrador o abierta para ser cancelada."
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model,name:l10n_mx_edi_cancellation.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_company__l10n_mx_edi_reversal_customer_journal_id
+msgid "L10N Mx Edi Reversal Customer Journal"
+msgstr ""
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_company__l10n_mx_edi_reversal_supplier_journal_id
+msgid "L10N Mx Edi Reversal Supplier Journal"
+msgstr ""
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_edi_format____last_update
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_move____last_update
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_account_payment____last_update
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_company____last_update
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid "Message : %s"
+msgstr "Mensaje : %s"
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid "Not defined"
+msgstr "No definido"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model,name:l10n_mx_edi_cancellation.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_bank_statement_line__l10n_mx_edi_cancellation_date
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_move__l10n_mx_edi_cancellation_date
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_payment__l10n_mx_edi_cancellation_date
+msgid "Save the cancellation date of the CFDI in the SAT"
+msgstr "Almacena la fecha de cancelación del CFDI en el SAT"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_bank_statement_line__l10n_mx_edi_cancellation_time
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_move__l10n_mx_edi_cancellation_time
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_payment__l10n_mx_edi_cancellation_time
+msgid "Save the cancellation time of the CFDI in the SAT"
+msgstr "Almacena la hora de cancelación del CFDI en el SAT"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_bank_statement_line__date_cancel
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_move__date_cancel
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_payment__date_cancel
+msgid "Save the moment when the invoice state change to \"cancel\" in Odoo."
+msgstr ""
+"Almacena el momento cuando el estado de factura cambia a \"cancelado\" en "
+"Odoo."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid "The Finkok service failed to cancel with the following error: %s"
+msgstr "El servicio de Finkok falló al cancelar con el siguiente error: %s"
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid ""
+"The PAC has sent this document to cancel, but the SAT has not processed it "
+"yet. Please try again in a few minutes or wait for the automatic action. SAT"
+" status for cancellation: %s"
+msgstr ""
+"El PAC ha enviado este documento a cancelar, pero el SAT no lo ha procesado aún. "
+"Por favor intente de nuevo en unos minutos o espere la acción automática. "
+"Estado del SAT para cancelación: %s"
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_bank_statement_line__l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_move__l10n_mx_edi_cancellation
+#: model:ir.model.fields,help:l10n_mx_edi_cancellation.field_account_payment__l10n_mx_edi_cancellation
+msgid ""
+"The SAT has 4 cases in which an invoice could be cancelled, please fill this field based on your case:\n"
+"Case 1: The invoice was generated with errors and must be re-invoiced, the format must be:\n"
+"\"01\" The UUID will be take from the new invoice related to the record.\n"
+"Case 2: The invoice has an error on the customer, this will be cancelled and replaced by a new with the customer fixed. The format must be:\n"
+" \"02\", only is required the case number.\n"
+"Case 3: The invoice was generated but the operation was cancelled, this will be cancelled and not must be generated a new invoice. The format must be:\n"
+" \"03\", only is required the case number.\n"
+"Case 4: Global invoice. The format must be:\n"
+" \"04\", only is required the case number."
+msgstr ""
+"El SAT tiene 4 casos en los que una factura puede ser cancelada, por favor llene este campo según sea el caso:\n"
+"Caso 1: La factura fue generada con errores y debe ser re-facturada, el formado debe ser:\n"
+"\"01\" donde el UUID es el folio fiscal de la factura generada para reemplazar este registro.\n"
+"Caso 2: La factura tiene un error en el cliente, esta debe ser cancelada y reemplazada por una nueva con el cliente correcto. El formato debe ser:\n"
+" \"02\", solo es requerido el número del caso.\n"
+"Caso 3: La factura fue generada pero se canceló la operación, esta debe ser cancelada y no se debe generar una nueva. El formato debe ser:\n"
+" \"03\", solo es requerido el número del caso.\n"
+"Caso 4: Factura global. The format must be:\n"
+" \"04\", solo es requerido el número del caso."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_edi_format.py:0
+#, python-format
+msgid "The next fiscal folios are related with this document:"
+msgstr "Los siguientes folios fiscales están relacionados a este documento:"
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_move.py:0
+#, python-format
+msgid "This option only could be used on invoices out of period."
+msgstr "Esta opción solo puede ser utilizada en facturas en periodo cerrado."
+
+#. module: l10n_mx_edi_cancellation
+#: code:addons/l10n_mx_edi_cancellation/models/account_move.py:0
+#, python-format
+msgid "This option only could be used on posted invoices."
+msgstr "Esta opción solo puede ser utilizada en facturas abiertas."
+
+#. module: l10n_mx_edi_cancellation
+#: model:ir.model.fields,field_description:l10n_mx_edi_cancellation.field_res_config_settings__l10n_mx_edi_reversal_supplier_journal_id
+msgid "Vendor Journal"
+msgstr "Diario de compra"

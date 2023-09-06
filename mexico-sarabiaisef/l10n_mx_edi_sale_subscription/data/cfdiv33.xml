@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="l10n_mx_edi_property_taxes" inherit_id="l10n_mx_edi.cfdiv33">
+        <xpath expr="//*[local-name()='Concepto']" position="inside">
+            <t t-if="line.l10n_mx_edi_property_taxes">
+                <cfdi:CuentaPredial
+                    t-att-Numero="line.get_parsed_l10n_mx_edi_property_taxes()"
+                    xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+                />
+            </t>
+        </xpath>
+    </template>
+    <template id="l10n_mx_edi_property_taxes_40" inherit_id="l10n_mx_edi_40.cfdiv40">
+        <xpath expr="//*[local-name()='Concepto']" position="inside">
+            <t t-if="line.l10n_mx_edi_property_taxes">
+                <cfdi:CuentaPredial
+                    t-att-Numero="line.get_parsed_l10n_mx_edi_property_taxes()"
+                    xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
+                />
+            </t>
+        </xpath>
+    </template>
+</odoo>

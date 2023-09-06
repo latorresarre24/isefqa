@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="templates" xml:space="preserve">
+
+    <t t-name="CFDIUsageLine" owl="1">
+        <tr
+            t-on-click="trigger('click-usage', {usage: props.usage})"
+            t-attf-class="client-line {{highlight}}" t-att-data-id="props.usage.id">
+            <td>
+                <t t-esc="props.usage.id" />
+                <span t-if="highlight"><br/></span>
+            </td>
+            <td>
+                <t t-esc="props.usage.name" />
+                <span t-if="highlight"><br/></span>
+            </td>
+        </tr>
+    </t>
+
+</templates>

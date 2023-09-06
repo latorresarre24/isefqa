@@ -1,0 +1,151 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#     * l10n_mx_edi_currency_trading
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-08 17:18+0000\n"
+"PO-Revision-Date: 2021-12-08 17:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_edi_currency_trading
+#: model:product.product,name:l10n_mx_edi_currency_trading.cad_currency_product_purchase
+#: model:product.template,name:l10n_mx_edi_currency_trading.cad_currency_product_purchase_product_template
+msgid "Compra de dólar canadience"
+msgstr ""
+
+#. module: l10n_mx_edi_currency_trading
+#: model:product.product,name:l10n_mx_edi_currency_trading.usd_currency_product_purchase
+#: model:product.template,name:l10n_mx_edi_currency_trading.usd_currency_product_purchase_product_template
+msgid "Compra de dólares"
+msgstr ""
+
+#. module: l10n_mx_edi_currency_trading
+#: model:product.product,name:l10n_mx_edi_currency_trading.eur_currency_product_purchase
+#: model:product.template,name:l10n_mx_edi_currency_trading.eur_currency_product_purchase_product_template
+msgid "Compra de euros"
+msgstr ""
+
+#. module: l10n_mx_edi_currency_trading
+#: model:uom.category,name:l10n_mx_edi_currency_trading.product_uom_categ_currency
+#: model:uom.uom,name:l10n_mx_edi_currency_trading.product_uom_currency
+msgid "Currency"
+msgstr "Divisa"
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model.fields,field_description:l10n_mx_edi_currency_trading.field_account_journal__l10n_mx_edi_currency_trading
+msgid "Currency Trading?"
+msgstr "¿Operaciones con divisas?"
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model.fields,field_description:l10n_mx_edi_currency_trading.field_product_product__l10n_mx_edi_ct_type
+#: model:ir.model.fields,field_description:l10n_mx_edi_currency_trading.field_product_template__l10n_mx_edi_ct_type
+msgid "Exchange operation type"
+msgstr "Tipo de operación cambiaria"
+
+#. module: l10n_mx_edi_currency_trading
+#: code:addons/l10n_mx_edi_currency_trading/models/account_move.py:0
+#, python-format
+msgid ""
+"In order to allow validate an invoice for currency trading, is necessary use"
+" a journal with that option enabled."
+msgstr ""
+"Para permitir validar una factura para operaciones con divisas, es necesario "
+"utilizar un diario con esa opción habilitada."
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model,name:l10n_mx_edi_currency_trading.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model,name:l10n_mx_edi_currency_trading.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento de diario"
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model.fields,help:l10n_mx_edi_currency_trading.field_account_journal__l10n_mx_edi_currency_trading
+msgid ""
+"Mark this option if the operations for this journal will be for currency "
+"trading, if this field is False will not allow operations for currency "
+"products."
+msgstr ""
+"Marque esta opción si las operaciones de este diario serán compra/venta "
+"de monedas, si esta campo no esta marcado no permitirá operaciones "
+"de divisas."
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model,name:l10n_mx_edi_currency_trading.model_product_template
+msgid "Product Template"
+msgstr "Plantilla del producto"
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model.fields.selection,name:l10n_mx_edi_currency_trading.selection__product_template__l10n_mx_edi_ct_type__purchase
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model.fields.selection,name:l10n_mx_edi_currency_trading.selection__product_template__l10n_mx_edi_ct_type__sale
+msgid "Sale"
+msgstr "Venta"
+
+#. module: l10n_mx_edi_currency_trading
+#: code:addons/l10n_mx_edi_currency_trading/models/account_move.py:0
+#, python-format
+msgid ""
+"This invoice contains products with different exchange operation types.\n"
+"It is not possible to bill currency purchases and sales within the same invoice."
+msgstr ""
+"Esta factura contiene productos con distintos tipos de operación cambiaria.\n"
+"No es posible facturar compras y ventas de divisas en una misma factura."
+
+#. module: l10n_mx_edi_currency_trading
+#: model:product.product,uom_name:l10n_mx_edi_currency_trading.cad_currency_product_purchase
+#: model:product.product,uom_name:l10n_mx_edi_currency_trading.cad_currency_product_sale
+#: model:product.product,uom_name:l10n_mx_edi_currency_trading.eur_currency_product_purchase
+#: model:product.product,uom_name:l10n_mx_edi_currency_trading.eur_currency_product_sale
+#: model:product.product,uom_name:l10n_mx_edi_currency_trading.usd_currency_product_purchase
+#: model:product.product,uom_name:l10n_mx_edi_currency_trading.usd_currency_product_sale
+#: model:product.template,uom_name:l10n_mx_edi_currency_trading.cad_currency_product_purchase_product_template
+#: model:product.template,uom_name:l10n_mx_edi_currency_trading.cad_currency_product_sale_product_template
+#: model:product.template,uom_name:l10n_mx_edi_currency_trading.eur_currency_product_purchase_product_template
+#: model:product.template,uom_name:l10n_mx_edi_currency_trading.eur_currency_product_sale_product_template
+#: model:product.template,uom_name:l10n_mx_edi_currency_trading.usd_currency_product_purchase_product_template
+#: model:product.template,uom_name:l10n_mx_edi_currency_trading.usd_currency_product_sale_product_template
+msgid "Units"
+msgstr ""
+
+#. module: l10n_mx_edi_currency_trading
+#: model:product.product,name:l10n_mx_edi_currency_trading.cad_currency_product_sale
+#: model:product.template,name:l10n_mx_edi_currency_trading.cad_currency_product_sale_product_template
+msgid "Venta de dólar canadiense"
+msgstr ""
+
+#. module: l10n_mx_edi_currency_trading
+#: model:product.product,name:l10n_mx_edi_currency_trading.usd_currency_product_sale
+#: model:product.template,name:l10n_mx_edi_currency_trading.usd_currency_product_sale_product_template
+msgid "Venta de dólares"
+msgstr ""
+
+#. module: l10n_mx_edi_currency_trading
+#: model:product.product,name:l10n_mx_edi_currency_trading.eur_currency_product_sale
+#: model:product.template,name:l10n_mx_edi_currency_trading.eur_currency_product_sale_product_template
+msgid "Venta de euros"
+msgstr ""
+
+#. module: l10n_mx_edi_currency_trading
+#: model:ir.model.fields,help:l10n_mx_edi_currency_trading.field_product_product__l10n_mx_edi_ct_type
+#: model:ir.model.fields,help:l10n_mx_edi_currency_trading.field_product_template__l10n_mx_edi_ct_type
+msgid ""
+"When this product is intended to be used to trade currencies, specifies the type of operation, i.e. if it's a purchase or sale.\n"
+" If set, this field will be used to create and fill the complement's XML node into the CFDI. If this field is not set in any of the invoice products, the complement will not be used and the XML node will not be included."
+msgstr ""
+"Cuando este producto será utilizado para el comercio de divisas, especifica el tipo de operación. Es decir, si es una compra o una venta.\n"
+" Si tiene algún valor, este campo será utilizado para crear y rellenar el nodo XML del complemento dentro del CFDI. Si no tiene un valor en ninguno de los productos de la factura, no se utilizará el complemento y no se incluirá el nodo XML."

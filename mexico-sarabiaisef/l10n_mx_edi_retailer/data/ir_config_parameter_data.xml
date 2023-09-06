@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="True">
+
+    <record id="param_buyer_gln" model="ir.config_parameter">
+        <field name="key">l10n_mx_edi_retailer.buyer_gln</field>
+        <field name="value">--BuyersGLN--</field>
+    </record>
+
+    <record id="param_seller_gln" model="ir.config_parameter">
+        <field name="key">l10n_mx_edi_retailer.seller_gln</field>
+        <field name="value">-SupplierGLN-</field>
+    </record>
+
+    <record id="param_seller_alternate_party_identification" model="ir.config_parameter">
+        <field name="key">l10n_mx_edi_retailer.seller_alternate_party_identification</field>
+        <field name="value">Supplier's Number</field>
+    </record>
+
+    <record id="param_ship_to_gln" model="ir.config_parameter">
+        <field name="key">l10n_mx_edi_retailer.ship_to_gln</field>
+        <field name="value">--BuyersGLN--</field>
+    </record>
+
+</odoo>

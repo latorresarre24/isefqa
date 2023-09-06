@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="retailer" inherit_id="l10n_mx_edi.cfdiv33">
+        <xpath expr="//*[name()='cfdi:Comprobante']" position="attributes" t-if="record.l10n_mx_edi_origin">
+            <attribute
+                name="t-att-xmlns__detallista"
+            >"http://www.sat.gob.mx/detallista" if record.x_complement_retailer_data else False</attribute>
+        </xpath>
+        <xpath expr="*" position="inside">
+            <t t-set="get_param" t-value="env['ir.config_parameter'].sudo().get_param" />
+            <cfdi:Complemento
+                t-if="record.x_complement_retailer_data"
+                xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+                xmlns:detallista="http://www.sat.gob.mx/detallista"
+            >
+                <t t-set="values" t-value="(record.x_complement_retailer_data or 5*'|').split('|')" />
+                <t t-set="lines" t-value="record.invoice_line_ids" />
+                <detallista:detallista
+                    type="SimpleInvoiceType"
+                    contentVersion="1.3.1"
+                    documentStructureVersion="AMC8.1"
+                    t-att-documentStatus="values[0].upper()"
+                >
+                    <detallista:requestForPaymentIdentification>
+                        <t t-set="document_type_dict" t-value="{'I': 'INVOICE', 'E': 'CREDIT_NOTE'}" />
+                        <detallista:entityType t-out="document_type_dict.get(document_type[0], document_type)" />
+                    </detallista:requestForPaymentIdentification>
+                    <detallista:specialInstruction t-if="record.invoice_payment_term_id" code="AAB">
+                        <detallista:text t-out="record.invoice_payment_term_id.name" />
+                    </detallista:specialInstruction>
+                    <t t-set="customs" t-value="set(lines.mapped('l10n_mx_edi_customs_number')) - {False}" />
+                    <detallista:specialInstruction t-if="customs" code="DUT">
+                        <t t-foreach="set().union(*[x.split(',') for x in customs])" t-as="pedimento">
+                            <detallista:text t-out="pedimento" />
+                        </t>
+                    </detallista:specialInstruction>
+                    <detallista:specialInstruction t-if="record.l10n_mx_edi_usage not in (False, 'P01')" code="PUR">
+                        <detallista:text
+                            t-out="dict(record._fields['l10n_mx_edi_usage'].selection).get(record.l10n_mx_edi_usage)"
+                        />
+                    </detallista:specialInstruction>
+                    <detallista:specialInstruction code="ZZZ">
+                        <detallista:text t-out="record._l10n_mx_edi_cfdi_amount_to_text()" />
+                    </detallista:specialInstruction>
+                    <detallista:orderIdentification>
+                        <detallista:referenceIdentification type="ON" t-out="record.name" />
+                        <detallista:ReferenceDate t-out="values[3] or False" />
+                    </detallista:orderIdentification>
+                    <detallista:AdditionalInformation>
+                        <!-- Any of the products is a lease -->
+                        <t t-if="record.env['product.template']._fields.get('l10n_mx_edi_property_tax')">
+                            <t
+                                t-set="property_taxes"
+                                t-value="set(lines.mapped('product_id.l10n_mx_edi_property_tax')) - {False}"
+                            />
+                            <t t-foreach="property_taxes" t-as="property_tax">
+                                <detallista:referenceIdentification type="AAE" t-out="property_tax" />
+                            </t>
+                        </t>
+                        <!-- If the payment method is check -->
+                        <t t-if="record.l10n_mx_edi_payment_method_id.code == '02'">
+                            <t t-foreach="record.payment_ids" t-as="check">
+                                <detallista:referenceIdentification type="CK" t-out="check.payment_reference" />
+                            </t>
+                        </t>
+                        <!-- Remission -->
+                        <detallista:referenceIdentification type="ACE" t-out="folio" />
+                        <!-- if this invoice refers to another one for billing merchandise -->
+                        <t t-if="(record.l10n_mx_edi_origin or '').startswith('05|')">
+                            <t t-foreach="record.l10n_mx_edi_origin.split('|')[1].split(',')" t-as="merchandise_uuid">
+                                <detallista:referenceIdentification type="DQ" t-out="merchandise_uuid" />
+                            </t>
+                        </t>
+                        <!-- Invoice number -->
+                        <detallista:referenceIdentification type="IV" t-out="record.name" />
+                        <!-- Purchase order identification -->
+                        <detallista:referenceIdentification type="ON" t-out="record.name" />
+                        <!-- if this invoice replaces another one -->
+                        <t t-if="(record.l10n_mx_edi_origin or '').startswith('04|')">
+                            <t t-foreach="record.l10n_mx_edi_origin.split('|')[1].split(',')" t-as="replaced">
+                                <detallista:referenceIdentification type="AWR" t-out="replaced" />
+                            </t>
+                        </t>
+                    </detallista:AdditionalInformation>
+                    <t t-if="len(values) &gt;= 3">
+                        <detallista:DeliveryNote>
+                            <t t-foreach="values[2].split(',')" t-as="received_folio">
+                                <detallista:referenceIdentification t-out="received_folio.lstrip() or False" />
+                            </t>
+                            <detallista:ReferenceDate t-out="values[1].lstrip() or False" />
+                        </detallista:DeliveryNote>
+                    </t>
+                    <detallista:buyer>
+                        <detallista:gln t-out="get_param('l10n_mx_edi_retailer.buyer_gln')" />
+                        <detallista:contactInformation>
+                            <detallista:personOrDepartmentName>
+                                <detallista:text t-out="values[4]" />
+                            </detallista:personOrDepartmentName>
+                        </detallista:contactInformation>
+                    </detallista:buyer>
+                    <detallista:seller>
+                        <detallista:gln t-out="get_param('l10n_mx_edi_retailer.seller_gln')" />
+                        <detallista:alternatePartyIdentification
+                            type="SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+                            t-out="get_param('l10n_mx_edi_retailer.seller_alternate_party_identification')"
+                        />
+                    </detallista:seller>
+                    <t
+                        t-set="ship_to"
+                        t-value="record.env['res.partner'].browse(record._get_invoice_delivery_partner_id())"
+                    />
+                    <detallista:shipTo t-if="ship_to">
+                        <detallista:gln t-out="get_param('l10n_mx_edi_retailer.ship_to_gln')" />
+                        <detallista:nameAndAddress>
+                            <!-- TODO check if multiple shipping addresses may be specified -->
+                            <t t-foreach="ship_to" t-as="address">
+                                <detallista:name t-out="(address.name or '')[:35]" />
+                                <detallista:streetAddressOne
+                                    t-out="', '.join([x for x in (address.street, address.l10n_mx_edi_colony) if x])[0:35] or False"
+                                />
+                                <detallista:city t-out="address.city" />
+                                <detallista:postalCode t-out="address.zip" />
+                            </t>
+                        </detallista:nameAndAddress>
+                    </detallista:shipTo>
+                    <!-- This element was deactivated because the "gln" and "alternative identification" are being placed statically. So if the company has branches, they cannot be placed that way. -->
+                    <t t-if="False and issued and issued != supplier">
+                        <detallista:InvoiceCreator>
+                            <detallista:gln t-out="issued.ref" />
+                            <!-- TODO check codes to ensure IA is the proper one -->
+                            <detallista:alternatePartyIdentification type="IA" t-out="issued.ref" />
+                            <detallista:nameAndAddress>
+                                <detallista:name t-out="(issued.name or '')[:35]" />
+                                <detallista:streetAddressOne
+                                    t-out="', '.join([getattr(issued, fld) for fld in ('street', 'l10n_mx_edi_colony') if getattr(issued, fld)])[0:35] or False"
+                                />
+                                <detallista:city t-out="issued.city" />
+                                <detallista:postalCode t-out="issued.zip" />
+                            </detallista:nameAndAddress>
+                        </detallista:InvoiceCreator>
+                    </t>
+                    <!-- TODO Check - Here need aduana information -->
+                    <t t-if="False">
+                    <detallista:Customs>
+                        <detallista:gln t-out="record.name" />
+                    </detallista:Customs>
+                    </t>
+                    <detallista:currency t-att-currencyISOCode="currency_name">
+                        <detallista:currencyFunction t-out="record.name and 'BILLING_CURRENCY'" />
+                        <detallista:rateOfChange t-out="rate" />
+                    </detallista:currency>
+                    <t t-set="pay_term" t-value="record.invoice_payment_term_id" />
+                    <t
+                        t-if="pay_term"
+                        t-set="pay_term_period"
+                        t-value="record.invoice_date_due - record.invoice_date"
+                    />
+                    <t
+                        t-set="percentage_discount"
+                        t-value="100*float(total_price_discount or 0.0)/float(total_price_subtotal_before_discount)"
+                    />
+                    <detallista:paymentTerms
+                        t-if="pay_term"
+                        t-att-paymentTermsEvent="'DATE_OF_INVOICE' if record.invoice_date == record.invoice_date_due else 'EFFECTIVE_DATE'"
+                        PaymentTermsRelationTime="REFERENCE_AFTER"
+                    >
+                        <detallista:netPayment
+                            t-att-netPaymentTermsType="'END_OF_MONTH' if pay_term.line_ids[-1].option in ('last_day_current_month', 'last_day_following_month') else 'BASIC_NET'"
+                        >
+                            <detallista:paymentTimePeriod>
+                                <detallista:timePeriodDue timePeriod="DAYS">
+                                    <detallista:value t-out="pay_term_period.days" />
+                                </detallista:timePeriodDue>
+                            </detallista:paymentTimePeriod>
+                        </detallista:netPayment>
+                        <detallista:discountPayment
+                            t-att-discountType="'ALLOWANCE_BY_PAYMENT_ON_TIME' if percentage_discount >= 0 else 'SANCTION'"
+                        >
+                          <detallista:percentage t-out="float('%.*f' % (currency_precision, percentage_discount))" />
+                        </detallista:discountPayment>
+                    </detallista:paymentTerms>
+                    <!-- <detallista:shipmentDetail/>--> <!-- TODO Search about this element and complete i-->
+                    <detallista:allowanceCharge
+                        allowanceChargeType="ALLOWANCE_GLOBAL"
+                        t-att-settlementType="values[5].upper()"
+                        sequenceNumber="1"
+                    >
+                        <detallista:specialServicesType>AJ</detallista:specialServicesType>
+                        <detallista:monetaryAmountOrPercentage>
+                            <detallista:rate base="INVOICE_VALUE">
+                                <detallista:percentage
+                                    t-out="float('%.*f' % (currency_precision, percentage_discount))"
+                                />
+                            </detallista:rate>
+                        </detallista:monetaryAmountOrPercentage>
+                    </detallista:allowanceCharge>
+                    <t t-foreach="lines" t-as="line">
+                        <detallista:lineItem type="SimpleInvoiceLineItemType" t-att-number="line_index">
+                            <detallista:tradeItemIdentification>
+                                <detallista:gtin t-out="line.product_id.barcode or 'N/A'" />
+                            </detallista:tradeItemIdentification>
+                            <detallista:alternateTradeItemIdentification
+                                type="BUYER_ASSIGNED"
+                                t-out="line.product_id.default_code"
+                            />
+                            <detallista:alternateTradeItemIdentification
+                                t-if="line.product_id.code != line.product_id.default_code"
+                                type="SUPPLIER_ASSIGNED"
+                                t-out="line.product_id.code"
+                            />
+                            <detallista:tradeItemDescriptionInformation
+                                t-att-language="'EN' if record.env.context.get('lang', '').startswith('en') else 'ES'"
+                            >
+                                <detallista:longText t-out="line.product_id.name[:35]" />
+                            </detallista:tradeItemDescriptionInformation>
+                            <detallista:invoicedQuantity
+                                t-att-unitOfMeasure="line.product_uom_id.unspsc_code_id.code"
+                                t-out="float('%.*f' % (currency_precision, line.quantity))"
+                            />
+                            <t t-set="line_quantity" t-value="line.quantity or 1.0" />
+                            <detallista:grossPrice>
+                                <detallista:Amount
+                                    t-out="format_float((line.price_subtotal / (1 - line.discount / 100) if line.discount != 100 else line.price_unit * line.quantity)/line_quantity, currency_precision)"
+                                />
+                            </detallista:grossPrice>
+                            <detallista:netPrice>
+                                <detallista:Amount
+                                    t-out="format_float(line.price_total/line_quantity, currency_precision)"
+                                />
+                            </detallista:netPrice>
+                            <detallista:totalLineAmount>
+                                <detallista:grossAmount>
+                                    <detallista:Amount
+                                        t-out="format_float(line.price_subtotal / (1 - line.discount / 100) if line.discount != 100 else line.price_unit * line.quantity, currency_precision)"
+                                    />
+                                </detallista:grossAmount>
+                                <detallista:netAmount>
+                                    <detallista:Amount t-out="format_float(line.price_total, currency_precision)" />
+                            </detallista:netAmount>
+                            </detallista:totalLineAmount>
+                        </detallista:lineItem>
+                    </t>
+                    <detallista:totalAmount>
+                        <detallista:Amount t-out="format_float(record.amount_total, currency_precision)" />
+                    </detallista:totalAmount>
+                    <detallista:TotalAllowanceCharge allowanceOrChargeType="ALLOWANCE">
+                        <detallista:specialServicesType>ABZ</detallista:specialServicesType>
+                        <t t-set="amountDiscount" t-value="total_price_discount or 0.0" />
+                        <detallista:Amount t-out="float('%.*f' % (currency_precision, amountDiscount))" />
+                    </detallista:TotalAllowanceCharge>
+                    <detallista:TotalAllowanceCharge allowanceOrChargeType="ALLOWANCE">
+                        <detallista:specialServicesType>TX</detallista:specialServicesType>
+                        <detallista:Amount t-out="format_float(total_tax_details_transferred, currency_precision)" />
+                    </detallista:TotalAllowanceCharge>
+                    <detallista:TotalAllowanceCharge allowanceOrChargeType="CHARGE">
+                        <detallista:specialServicesType>TX</detallista:specialServicesType>
+                        <detallista:Amount t-out="format_float(total_tax_details_withholding, currency_precision)" />
+                    </detallista:TotalAllowanceCharge>
+                </detallista:detallista>
+            </cfdi:Complemento>
+        </xpath>
+    </template>
+    <template id="retailer_40" inherit_id="l10n_mx_edi_40.cfdiv40">
+        <xpath expr="//*[name()='cfdi:Comprobante']" position="attributes" t-if="record.l10n_mx_edi_origin">
+            <attribute
+                name="t-att-xmlns__detallista"
+            >"http://www.sat.gob.mx/detallista" if record.x_complement_retailer_data else False</attribute>
+        </xpath>
+        <xpath expr="*" position="inside">
+            <t t-set="get_param" t-value="env['ir.config_parameter'].sudo().get_param" />
+            <cfdi:Complemento
+                t-if="record.x_complement_retailer_data"
+                xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
+                xmlns:detallista="http://www.sat.gob.mx/detallista"
+            >
+                <t t-set="values" t-value="(record.x_complement_retailer_data or 5*'|').split('|')" />
+                <t t-set="lines" t-value="record.invoice_line_ids" />
+                <detallista:detallista
+                    type="SimpleInvoiceType"
+                    contentVersion="1.3.1"
+                    documentStructureVersion="AMC8.1"
+                    t-att-documentStatus="values[0].upper()"
+                >
+                    <detallista:requestForPaymentIdentification>
+                        <t t-set="document_type_dict" t-value="{'I': 'INVOICE', 'E': 'CREDIT_NOTE'}" />
+                        <detallista:entityType t-out="document_type_dict.get(document_type[0], document_type)" />
+                    </detallista:requestForPaymentIdentification>
+                    <detallista:specialInstruction t-if="record.invoice_payment_term_id" code="AAB">
+                        <detallista:text t-out="record.invoice_payment_term_id.name" />
+                    </detallista:specialInstruction>
+                    <t t-set="customs" t-value="set(lines.mapped('l10n_mx_edi_customs_number')) - {False}" />
+                    <detallista:specialInstruction t-if="customs" code="DUT">
+                        <t t-foreach="set().union(*[x.split(',') for x in customs])" t-as="pedimento">
+                            <detallista:text t-out="pedimento" />
+                        </t>
+                    </detallista:specialInstruction>
+                    <detallista:specialInstruction t-if="record.l10n_mx_edi_usage not in (False, 'P01')" code="PUR">
+                        <detallista:text
+                            t-out="dict(record._fields['l10n_mx_edi_usage'].selection).get(record.l10n_mx_edi_usage)"
+                        />
+                    </detallista:specialInstruction>
+                    <detallista:specialInstruction code="ZZZ">
+                        <detallista:text t-out="record._l10n_mx_edi_cfdi_amount_to_text()" />
+                    </detallista:specialInstruction>
+                    <detallista:orderIdentification>
+                        <detallista:referenceIdentification type="ON" t-out="record.name" />
+                        <detallista:ReferenceDate t-out="values[3] or False" />
+                    </detallista:orderIdentification>
+                    <detallista:AdditionalInformation>
+                        <!-- Any of the products is a lease -->
+                        <t t-if="record.env['product.template']._fields.get('l10n_mx_edi_property_tax')">
+                            <t
+                                t-set="property_taxes"
+                                t-value="set(lines.mapped('product_id.l10n_mx_edi_property_tax')) - {False}"
+                            />
+                            <t t-foreach="property_taxes" t-as="property_tax">
+                                <detallista:referenceIdentification type="AAE" t-out="property_tax" />
+                            </t>
+                        </t>
+                        <!-- If the payment method is check -->
+                        <t t-if="record.l10n_mx_edi_payment_method_id.code == '02'">
+                            <t t-foreach="record.payment_ids" t-as="check">
+                                <detallista:referenceIdentification type="CK" t-out="check.payment_reference" />
+                            </t>
+                        </t>
+                        <!-- Remission -->
+                        <detallista:referenceIdentification type="ACE" t-out="folio" />
+                        <!-- if this invoice refers to another one for billing merchandise -->
+                        <t t-if="(record.l10n_mx_edi_origin or '').startswith('05|')">
+                            <t t-foreach="record.l10n_mx_edi_origin.split('|')[1].split(',')" t-as="merchandise_uuid">
+                                <detallista:referenceIdentification type="DQ" t-out="merchandise_uuid" />
+                            </t>
+                        </t>
+                        <!-- Invoice number -->
+                        <detallista:referenceIdentification type="IV" t-out="record.name" />
+                        <!-- Purchase order identification -->
+                        <detallista:referenceIdentification type="ON" t-out="record.name" />
+                        <!-- if this invoice replaces another one -->
+                        <t t-if="(record.l10n_mx_edi_origin or '').startswith('04|')">
+                            <t t-foreach="record.l10n_mx_edi_origin.split('|')[1].split(',')" t-as="replaced">
+                                <detallista:referenceIdentification type="AWR" t-out="replaced" />
+                            </t>
+                        </t>
+                    </detallista:AdditionalInformation>
+                    <t t-if="len(values) &gt;= 3">
+                        <detallista:DeliveryNote>
+                            <t t-foreach="values[2].split(',')" t-as="received_folio">
+                                <detallista:referenceIdentification t-out="received_folio.lstrip() or False" />
+                            </t>
+                            <detallista:ReferenceDate t-out="values[1].lstrip() or False" />
+                        </detallista:DeliveryNote>
+                    </t>
+                    <detallista:buyer>
+                        <detallista:gln t-out="get_param('l10n_mx_edi_retailer.buyer_gln')" />
+                        <detallista:contactInformation t-if="values[4]">
+                            <detallista:personOrDepartmentName>
+                                <detallista:text t-out="values[4]" />
+                            </detallista:personOrDepartmentName>
+                        </detallista:contactInformation>
+                    </detallista:buyer>
+                    <detallista:seller>
+                        <detallista:gln t-out="get_param('l10n_mx_edi_retailer.seller_gln')" />
+                        <detallista:alternatePartyIdentification
+                            type="SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY"
+                            t-out="get_param('l10n_mx_edi_retailer.seller_alternate_party_identification')"
+                        />
+                    </detallista:seller>
+                    <t
+                        t-set="ship_to"
+                        t-value="record.env['res.partner'].browse(record._get_invoice_delivery_partner_id())"
+                    />
+                    <detallista:shipTo t-if="ship_to">
+                        <detallista:gln t-out="get_param('l10n_mx_edi_retailer.ship_to_gln')" />
+                        <detallista:nameAndAddress>
+                            <!-- TODO check if multiple shipping addresses may be specified -->
+                            <t t-foreach="ship_to" t-as="address">
+                                <detallista:name t-out="(address.name or '')[:35]" />
+                                <detallista:streetAddressOne
+                                    t-out="', '.join([x for x in (address.street, address.l10n_mx_edi_colony) if x])[0:35] or False"
+                                />
+                                <detallista:city t-out="address.city" />
+                                <detallista:postalCode t-out="address.zip" />
+                            </t>
+                        </detallista:nameAndAddress>
+                    </detallista:shipTo>
+                    <!-- This element was deactivated because the "gln" and "alternative identification" are being placed statically. So if the company has branches, they cannot be placed that way. -->
+                    <t t-if="False and issued and issued != supplier">
+                        <detallista:InvoiceCreator>
+                            <detallista:gln t-out="issued.ref" />
+                            <!-- TODO check codes to ensure IA is the proper one -->
+                            <detallista:alternatePartyIdentification type="IA" t-out="issued.ref" />
+                            <detallista:nameAndAddress>
+                                <detallista:name t-out="(issued.name or '')[:35]" />
+                                <detallista:streetAddressOne
+                                    t-out="', '.join([getattr(issued, fld) for fld in ('street', 'l10n_mx_edi_colony') if getattr(issued, fld)])[0:35] or False"
+                                />
+                                <detallista:city t-out="issued.city" />
+                                <detallista:postalCode t-out="issued.zip" />
+                            </detallista:nameAndAddress>
+                        </detallista:InvoiceCreator>
+                    </t>
+                    <!-- TODO Check - Here need aduana information -->
+                    <t t-if="False">
+                    <detallista:Customs>
+                        <detallista:gln t-out="record.name" />
+                    </detallista:Customs>
+                    </t>
+                    <detallista:currency t-att-currencyISOCode="currency_name">
+                        <detallista:currencyFunction t-out="record.name and 'BILLING_CURRENCY'" />
+                        <detallista:rateOfChange t-out="rate" />
+                    </detallista:currency>
+                    <t t-set="pay_term" t-value="record.invoice_payment_term_id" />
+                    <t
+                        t-if="pay_term"
+                        t-set="pay_term_period"
+                        t-value="record.invoice_date_due - record.invoice_date"
+                    />
+                    <t
+                        t-set="percentage_discount"
+                        t-value="100*float(total_price_discount or 0.0)/float(total_price_subtotal_before_discount)"
+                    />
+                    <detallista:paymentTerms
+                        t-if="pay_term"
+                        t-att-paymentTermsEvent="'DATE_OF_INVOICE' if record.invoice_date == record.invoice_date_due else 'EFFECTIVE_DATE'"
+                        PaymentTermsRelationTime="REFERENCE_AFTER"
+                    >
+                        <detallista:netPayment
+                            t-att-netPaymentTermsType="'END_OF_MONTH' if pay_term.line_ids[-1].option in ('last_day_current_month', 'last_day_following_month') else 'BASIC_NET'"
+                        >
+                            <detallista:paymentTimePeriod>
+                                <detallista:timePeriodDue timePeriod="DAYS">
+                                    <detallista:value t-out="pay_term_period.days" />
+                                </detallista:timePeriodDue>
+                            </detallista:paymentTimePeriod>
+                        </detallista:netPayment>
+                        <detallista:discountPayment
+                            t-att-discountType="'ALLOWANCE_BY_PAYMENT_ON_TIME' if percentage_discount >= 0 else 'SANCTION'"
+                        >
+                          <detallista:percentage t-out="float('%.*f' % (currency_precision, percentage_discount))" />
+                        </detallista:discountPayment>
+                    </detallista:paymentTerms>
+                    <!-- <detallista:shipmentDetail/>--> <!-- TODO Search about this element and complete i-->
+                    <detallista:allowanceCharge
+                        allowanceChargeType="ALLOWANCE_GLOBAL"
+                        t-att-settlementType="values[5].upper()"
+                        sequenceNumber="1"
+                    >
+                        <detallista:specialServicesType>AJ</detallista:specialServicesType>
+                        <detallista:monetaryAmountOrPercentage>
+                            <detallista:rate base="INVOICE_VALUE">
+                                <detallista:percentage
+                                    t-out="float('%.*f' % (currency_precision, percentage_discount))"
+                                />
+                            </detallista:rate>
+                        </detallista:monetaryAmountOrPercentage>
+                    </detallista:allowanceCharge>
+                    <t t-foreach="lines" t-as="line">
+                        <detallista:lineItem type="SimpleInvoiceLineItemType" t-att-number="line_index">
+                            <detallista:tradeItemIdentification>
+                                <detallista:gtin t-out="line.product_id.barcode or 'N/A'" />
+                            </detallista:tradeItemIdentification>
+                            <detallista:alternateTradeItemIdentification
+                                type="BUYER_ASSIGNED"
+                                t-out="line.product_id.default_code"
+                            />
+                            <detallista:alternateTradeItemIdentification
+                                t-if="line.product_id.code != line.product_id.default_code"
+                                type="SUPPLIER_ASSIGNED"
+                                t-out="line.product_id.code"
+                            />
+                            <detallista:tradeItemDescriptionInformation
+                                t-att-language="'EN' if record.env.context.get('lang', '').startswith('en') else 'ES'"
+                            >
+                                <detallista:longText t-out="line.product_id.name[:35]" />
+                            </detallista:tradeItemDescriptionInformation>
+                            <detallista:invoicedQuantity
+                                t-att-unitOfMeasure="line.product_uom_id.unspsc_code_id.code"
+                                t-out="float('%.*f' % (currency_precision, line.quantity))"
+                            />
+                            <t t-set="line_quantity" t-value="line.quantity or 1.0" />
+                            <detallista:grossPrice>
+                                <detallista:Amount
+                                    t-out="format_float((line.price_subtotal / (1 - line.discount / 100) if line.discount != 100 else line.price_unit * line.quantity)/line_quantity, currency_precision)"
+                                />
+                            </detallista:grossPrice>
+                            <detallista:netPrice>
+                                <detallista:Amount
+                                    t-out="format_float(line.price_total/line_quantity, currency_precision)"
+                                />
+                            </detallista:netPrice>
+                            <detallista:totalLineAmount>
+                                <detallista:grossAmount>
+                                    <detallista:Amount
+                                        t-out="format_float(line.price_subtotal / (1 - line.discount / 100) if line.discount != 100 else line.price_unit * line.quantity, currency_precision)"
+                                    />
+                                </detallista:grossAmount>
+                                <detallista:netAmount>
+                                    <detallista:Amount t-out="format_float(line.price_total, currency_precision)" />
+                            </detallista:netAmount>
+                            </detallista:totalLineAmount>
+                        </detallista:lineItem>
+                    </t>
+                    <detallista:totalAmount>
+                        <detallista:Amount t-out="format_float(record.amount_total, currency_precision)" />
+                    </detallista:totalAmount>
+                    <detallista:TotalAllowanceCharge allowanceOrChargeType="ALLOWANCE">
+                        <detallista:specialServicesType>ABZ</detallista:specialServicesType>
+                        <t t-set="amountDiscount" t-value="total_price_discount or 0.0" />
+                        <detallista:Amount t-out="float('%.*f' % (currency_precision, amountDiscount))" />
+                    </detallista:TotalAllowanceCharge>
+                    <detallista:TotalAllowanceCharge allowanceOrChargeType="ALLOWANCE">
+                        <detallista:specialServicesType>TX</detallista:specialServicesType>
+                        <detallista:Amount t-out="format_float(total_tax_details_transferred, currency_precision)" />
+                    </detallista:TotalAllowanceCharge>
+                    <detallista:TotalAllowanceCharge allowanceOrChargeType="CHARGE">
+                        <detallista:specialServicesType>TX</detallista:specialServicesType>
+                        <detallista:Amount t-out="format_float(total_tax_details_withholding, currency_precision)" />
+                    </detallista:TotalAllowanceCharge>
+                </detallista:detallista>
+            </cfdi:Complemento>
+        </xpath>
+    </template>
+
+</odoo>

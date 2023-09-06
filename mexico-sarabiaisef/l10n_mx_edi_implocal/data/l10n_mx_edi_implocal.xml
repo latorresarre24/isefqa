@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="l10n_mx_edi_implocal" inherit_id="l10n_mx_edi.cfdiv33">
+        <xpath expr="//*[local-name()='Conceptos']" position="after">
+            <t t-set="transferred_local" t-value="[value for value in record.invoice_line_ids.mapped('tax_ids').filtered(lambda r: r.invoice_repartition_line_ids.filtered(lambda rep: rep.tag_ids and rep.tag_ids[0].name.lower() == 'local') and r.amount &gt;= 0)]"/>
+            <t t-set="withholding_local" t-value="[value for value in record.invoice_line_ids.mapped('tax_ids').filtered(lambda r: r.invoice_repartition_line_ids.filtered(lambda rep: rep.tag_ids and rep.tag_ids[0].name.lower() == 'local') and r.amount &lt; 0)]"/>
+        </xpath>
+        <xpath expr="*" position="inside">
+            <t t-if="record.invoice_line_ids.mapped('tax_ids.invoice_repartition_line_ids').filtered(lambda r: r. tag_ids and r.tag_ids[0].name.lower() == 'local')">
+                <cfdi:Complemento
+                    xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <implocal:ImpuestosLocales
+                        xsi:schemaLocation="http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd"
+                        xmlns:implocal="http://www.sat.gob.mx/implocal"
+                        version="1.0"
+                        t-att-TotaldeRetenciones="format_float(abs(tax_details_withholding_local.get('total')), currency_precision)"
+                        t-att-TotaldeTraslados="format_float(tax_details_transferred_local.get('total'), currency_precision)">
+                        <t t-if="transferred_local">
+                            <t t-foreach="tax_details_transferred_local.get('tax_details_local').values()" t-as="tax">
+                                <implocal:TrasladosLocales
+                                t-att-ImpLocTrasladado="tax['tax'].name"
+                                t-att-TasadeTraslado="format_float(round(abs(tax['tax'].amount), 2), 6)"
+                                t-att-Importe="format_float((abs(tax['tax'].amount / 100 * tax['base_amount'])), 2)"
+                                />
+                            </t>
+                        </t>
+                        <t t-if="withholding_local">
+                            <t t-foreach="tax_details_withholding_local.get('withholding_details_local').values()" t-as="tax">
+                                <implocal:RetencionesLocales
+                                t-att-ImpLocRetenido="tax['tax'].name"
+                                t-att-TasadeRetencion="format_float(round(abs(tax['tax'].amount), 2), 6)"
+                                t-att-Importe="format_float((abs(tax['tax'].amount / 100 * tax['base_amount'])), 2)"
+                                />
+                            </t>
+                        </t>
+                    </implocal:ImpuestosLocales>
+                </cfdi:Complemento>
+            </t>
+        </xpath>
+        <xpath expr="//*[name()='cfdi:Comprobante']" position="attributes" t-if="record.l10n_mx_edi_origin">
+            <attribute name="t-att-xmlns__implocal">"http://www.sat.gob.mx/implocal" if record.invoice_line_ids.mapped('tax_ids.invoice_repartition_line_ids').filtered(lambda r: r. tag_ids and r.tag_ids[0].name.lower() == 'local') else False</attribute>
+        </xpath>
+    </template>
+    <template id="l10n_mx_edi_implocal_40" inherit_id="l10n_mx_edi_40.cfdiv40">
+        <xpath expr="//*[local-name()='Conceptos']" position="after">
+            <t t-set="transferred_local" t-value="[value for value in record.invoice_line_ids.mapped('tax_ids').filtered(lambda r: r.invoice_repartition_line_ids.filtered(lambda rep: rep.tag_ids and rep.tag_ids[0].name.lower() == 'local') and r.amount &gt;= 0)]"/>
+            <t t-set="withholding_local" t-value="[value for value in record.invoice_line_ids.mapped('tax_ids').filtered(lambda r: r.invoice_repartition_line_ids.filtered(lambda rep: rep.tag_ids and rep.tag_ids[0].name.lower() == 'local') and r.amount &lt; 0)]"/>
+        </xpath>
+        <xpath expr="*" position="inside">
+            <t t-if="record.invoice_line_ids.mapped('tax_ids.invoice_repartition_line_ids').filtered(lambda r: r. tag_ids and r.tag_ids[0].name.lower() == 'local')">
+                <cfdi:Complemento
+                    xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                    <implocal:ImpuestosLocales
+                        xsi:schemaLocation="http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd"
+                        xmlns:implocal="http://www.sat.gob.mx/implocal"
+                        version="1.0"
+                        t-att-TotaldeRetenciones="format_float(abs(tax_details_withholding_local.get('total')), currency_precision)"
+                        t-att-TotaldeTraslados="format_float(tax_details_transferred_local.get('total'), currency_precision)">
+                        <t t-if="transferred_local">
+                            <t t-foreach="tax_details_transferred_local.get('tax_details_local').values()" t-as="tax">
+                                <implocal:TrasladosLocales
+                                t-att-ImpLocTrasladado="tax['tax'].name"
+                                t-att-TasadeTraslado="format_float(round(abs(tax['tax'].amount), 2), 6)"
+                                t-att-Importe="format_float((abs(tax['tax_amount_currency'])), 2)"
+                                />
+                            </t>
+                        </t>
+                        <t t-if="withholding_local">
+                            <t t-foreach="tax_details_withholding_local.get('withholding_details_local').values()" t-as="tax">
+                                <implocal:RetencionesLocales
+                                t-att-ImpLocRetenido="tax['tax'].name"
+                                t-att-TasadeRetencion="format_float(round(abs(tax['tax'].amount), 2), 6)"
+                                t-att-Importe="format_float((abs(tax['tax_amount_currency'])), 2)"
+                                />
+                            </t>
+                        </t>
+                    </implocal:ImpuestosLocales>
+                </cfdi:Complemento>
+            </t>
+        </xpath>
+        <xpath expr="//*[name()='cfdi:Comprobante']" position="attributes" t-if="record.l10n_mx_edi_origin">
+            <attribute name="t-att-xmlns__implocal">"http://www.sat.gob.mx/implocal" if record.invoice_line_ids.mapped('tax_ids.invoice_repartition_line_ids').filtered(lambda r: r. tag_ids and r.tag_ids[0].name.lower() == 'local') else False</attribute>
+        </xpath>
+    </template>
+</odoo>

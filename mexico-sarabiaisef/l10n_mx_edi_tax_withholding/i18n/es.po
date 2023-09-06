@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#     * l10n_mx_edi_tax_withholding
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-09 18:28+0000\n"
+"PO-Revision-Date: 2021-09-09 18:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,help:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_amount
+msgid "Based on the amount and the tax, set the Withholding amount."
+msgstr ""
+"Basado en el total y el impuesto aplicado, asigne el monto de la retención."
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,help:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_concept
+msgid "Concept for tax withholding complement."
+msgstr "Concepto para el complemento de retenciones."
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_edi_format__display_name
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__display_name
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_l10n_mx_edi_certificate__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model,name:l10n_mx_edi_tax_withholding.model_account_edi_format
+msgid "EDI format"
+msgstr "Formato EDI"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_is_tax_withholding
+msgid "Generate Tax Withholding?"
+msgstr "¿Generar CFDI de retenciones?"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_edi_format__id
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_move__id
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__id
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_l10n_mx_edi_certificate__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,help:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_is_tax_withholding
+msgid "If True, the CFDI with tax withholding will be generated."
+msgstr "Si se marca esta opción, el CFDI de retenciones será generado."
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,help:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_type
+msgid "Indicate the tax withholding type to set in the CFDI."
+msgstr "Indique el tipo de retención a colocar en el CFDI."
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model,name:l10n_mx_edi_tax_withholding.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_edi_format____last_update
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_move____last_update
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment____last_update
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_l10n_mx_edi_certificate____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields.selection,name:l10n_mx_edi_tax_withholding.selection__account_payment__l10n_mx_edi_tax_withholding_type__definitivo
+msgid "Pago definitivo"
+msgstr ""
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields.selection,name:l10n_mx_edi_tax_withholding.selection__account_payment__l10n_mx_edi_tax_withholding_type__provisional
+msgid "Pago provisional"
+msgstr ""
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model,name:l10n_mx_edi_tax_withholding.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_rate
+msgid "Rate Tax Withholding"
+msgstr "Tipo de Cambio Retenciones"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,help:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_rate
+msgid ""
+"Rate accorded for this operation. If this payment is in USD, set the rate "
+"accorded. The payment total and taxes will be multiplied for this value in "
+"the XML."
+msgstr ""
+"Tipo de cambio acordado para esta operación. Si este pago es en dolares, "
+"asigne el tipo de cambio acordado. El total del pago y los impuestos serán "
+"multiplicados por este valor en el XML."
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model,name:l10n_mx_edi_tax_withholding.model_l10n_mx_edi_certificate
+msgid "SAT Digital Sail"
+msgstr "Sello Digital SAT"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_id
+msgid "Tax Withholding"
+msgstr "Impuesto"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_amount
+msgid "Tax Withholding Amount"
+msgstr "Monto del Impuesto de Retenciones"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_concept
+msgid "Tax Withholding Concept"
+msgstr "Concepto Retenciones"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,field_description:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_type
+msgid "Tax Withholding Type"
+msgstr "Tipo de Retención"
+
+#. module: l10n_mx_edi_tax_withholding
+#: model:ir.model.fields,help:l10n_mx_edi_tax_withholding.field_account_payment__l10n_mx_edi_tax_withholding_id
+msgid "Tax to be used in the tax withholding."
+msgstr "Impuesto a ser utilizado para la retención."

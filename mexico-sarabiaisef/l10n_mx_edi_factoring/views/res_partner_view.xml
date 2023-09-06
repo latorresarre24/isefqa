@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_property_form" model="ir.ui.view">
+        <field name="name">l10n_mx_edi_factoring.res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="l10n_mx_edi.l10n_mx_edi_inh_res_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='addenda']" position="inside">
+                <group string="Factoring">
+                    <field name="l10n_mx_edi_factoring"/>
+                    <field name="l10n_mx_edi_factoring_id"
+                        options="{'no_create': True}"
+                        domain="[('id','!=',id), ('l10n_mx_edi_factoring', '=', True)]"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

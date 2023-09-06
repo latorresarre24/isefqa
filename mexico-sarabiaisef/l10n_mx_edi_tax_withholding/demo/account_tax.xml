@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="tax_withholding" model="account.tax">
+        <field name="name">ISR(25%) RETENCIONES</field>
+        <field name="description">ISR(25%)</field>
+        <field name="amount">25</field>
+        <field name="amount_type">percent</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="tax_exigibility">on_payment</field>
+        <field
+            name="invoice_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'tag_ids': [ref('l10n_mx.tag_isr')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+        <field
+            name="refund_repartition_line_ids"
+            eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'tag_ids': [ref('l10n_mx.tag_isr')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"
+        />
+    </record>
+</odoo>

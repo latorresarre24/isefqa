@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="pos.config" id="pos_config_main_mx" context="{'allowed_company_ids': [ref('l10n_mx.demo_company_mx')]}">
+        <field name="name">Shop</field>
+        <field name="barcode_nomenclature_id" ref="barcodes.default_barcode_nomenclature"/>
+    </record>
+
+    <function model="pos.config" name="post_install_pos_localisation">
+        <value model="res.company" eval="obj().env.ref('l10n_mx.demo_company_mx')"/>
+    </function>
+</odoo>

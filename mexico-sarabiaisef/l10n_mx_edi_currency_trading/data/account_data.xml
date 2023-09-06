@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="currency_operations_account_usd" model="account.account">
+        <field name="name">Venta de dólares americanos</field>
+        <field name="code">102.01.20</field>
+        <field name="user_type_id" ref="account.data_account_type_revenue"/>
+    </record>
+    <record id="currency_operations_account_eur" model="account.account">
+        <field name="name">Venta de euros</field>
+        <field name="code">102.01.21</field>
+        <field name="user_type_id" ref="account.data_account_type_revenue"/>
+    </record>
+    <record id="currency_operations_account_cad" model="account.account">
+        <field name="name">Venta de dólares canadienses</field>
+        <field name="code">102.01.22</field>
+        <field name="user_type_id" ref="account.data_account_type_revenue"/>
+    </record>
+    <record id="currency_operations_journal" model="account.journal">
+        <field name="name">Venta de divisas</field>
+        <field name="code">INVD</field>
+        <field name="type">sale</field>
+        <field name="show_on_dashboard" eval="False"/>
+        <field name="l10n_mx_edi_currency_trading" eval="True"/>
+    </record>
+    <record id="tax_currency_trading" model="account.tax">
+        <field name="name">IVA(0%) DIVISAS</field>
+        <field name="description">IVA(0%)</field>
+        <field name="amount">0</field>
+        <field name="amount_type">percent</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="l10n_mx.tax_group_iva_0"/>
+        <field name="tax_exigibility">on_payment</field>
+        <field name="l10n_mx_tax_type">Exento</field>
+        <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'tag_ids': [ref('l10n_mx.tag_iva')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"/>
+        <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'tag_ids': [ref('l10n_mx.tag_iva')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+            }),
+        ]"/>
+    </record>
+</odoo>

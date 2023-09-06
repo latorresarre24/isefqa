@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_account_payment_invoice_form" model="ir.ui.view">
+        <field name="name">view.account.payment.invoice.form</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_difference_handling']" position="after">
+                <group attrs="{'invisible': ['|', ('payment_difference_handling','!=','open'), ('payment_difference', '>=', 0)]}">
+                    <field name="l10n_mx_edi_generate_advance"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

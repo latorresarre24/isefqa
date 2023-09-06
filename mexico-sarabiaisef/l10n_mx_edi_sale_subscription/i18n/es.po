@@ -1,0 +1,66 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#     * l10n_mx_edi_sale_subscription
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-16 19:31+0000\n"
+"PO-Revision-Date: 2022-11-16 19:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_mx_edi_sale_subscription
+#: code:addons/l10n_mx_edi_sale_subscription/models/sale_subscription.py:0
+#, python-format
+msgid "%(name)s. Property Taxes Account: %(tax)s"
+msgstr "%(name)s. Cuenta Predial: %(tax)s"
+
+#. module: l10n_mx_edi_sale_subscription
+#: model_terms:ir.ui.view,arch_db:l10n_mx_edi_sale_subscription.report_invoice_document_property_taxes
+msgid "<br/>Property Taxes:"
+msgstr "<br/>Cuenta Predial:"
+
+#. module: l10n_mx_edi_sale_subscription
+#: model:ir.model.fields,help:l10n_mx_edi_sale_subscription.field_account_move_line__l10n_mx_edi_property_taxes
+msgid ""
+"If this product is a lease, specifies the property taxes account which the property was registered in the cadastral system of the state.\n"
+"If this field is set, the concept in the CFDI will to have this information in the Concept."
+msgstr ""
+"Si este producto es un arrendamiento, especifique la cuenta predial del inmueble. \n"
+"Si este campo es asignado, el concepto en el CFDI tendrá esta información."
+
+#. module: l10n_mx_edi_sale_subscription
+#: model:ir.model.fields,help:l10n_mx_edi_sale_subscription.field_sale_subscription_line__l10n_mx_edi_property_taxes
+msgid ""
+"If this product is a lease, specifies the property taxes account which the property was registered in the cadastral system of the state.\n"
+"If this field is set, the invoice to generate from this subscription will to have this information in the Concept."
+msgstr ""
+"Si este producto es un arrendamiento, especifique la cuenta predial del inmueble.\n"
+"Si este campo es asignado, la factura a generar desde esta subscripción tendrá esta información en el concepto."
+
+#. module: l10n_mx_edi_sale_subscription
+#: model:ir.model,name:l10n_mx_edi_sale_subscription.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: l10n_mx_edi_sale_subscription
+#: model:ir.model.fields,field_description:l10n_mx_edi_sale_subscription.field_account_move_line__l10n_mx_edi_property_taxes
+#: model:ir.model.fields,field_description:l10n_mx_edi_sale_subscription.field_sale_subscription_line__l10n_mx_edi_property_taxes
+msgid "Property Taxes Account"
+msgstr "Cuenta Predial"
+
+#. module: l10n_mx_edi_sale_subscription
+#: model:ir.model,name:l10n_mx_edi_sale_subscription.model_sale_subscription
+msgid "Subscription"
+msgstr "Suscripción"
+
+#. module: l10n_mx_edi_sale_subscription
+#: model:ir.model,name:l10n_mx_edi_sale_subscription.model_sale_subscription_line
+msgid "Subscription Line"
+msgstr "Línea de suscripción"

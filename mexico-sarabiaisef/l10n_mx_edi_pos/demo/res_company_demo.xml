@@ -1,0 +1,11 @@
+<odoo>
+    <record id="base.main_company" model="res.company">
+        <field name="l10n_mx_edi_pac">finkok</field>
+        <field name="l10n_mx_edi_pac_test_env" eval="True" />
+        <field name="l10n_mx_edi_fiscal_regime">601</field>
+        <field
+            name="l10n_mx_edi_certificate_ids"
+            eval="[Command.set([ref('l10n_mx_edi.demo_certificate'),])]"
+        />
+    </record>
+</odoo>
