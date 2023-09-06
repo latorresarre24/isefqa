@@ -1,0 +1,464 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_edi_purchase_document
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-04 00:22+0000\n"
+"PO-Revision-Date: 2021-06-04 00:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ", </span> Customer RFC: <span level=\"2\">"
+msgstr ", </span> RFC Cliente: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ", </span> Invoice Total: <span level=\"2\">"
+msgstr ", </span> Total Factura: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ", </span> Supplier invoice number: <span level=\"2\">"
+msgstr ", </span> Numero de factura proveedor: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ", </span> Your Company RFC: <span level=\"2\">"
+msgstr ", </span> Tu RFC de Compañía: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "</span> was not found or is disabled.</div>"
+msgstr "</span> no fue encontrado o fue desactivado.</div>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<button class=\"dnd-alert-button\" tag=\"forcesave\">Force Save</button>"
+msgstr "<button class=\"dnd-alert-button\" tag=\"forcesave\">Forzar Salvar</button>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<button class=\"dnd-alert-button\" tag=\"remove\">Remove XML</button>"
+msgstr "<button class=\"dnd-alert-button\" tag=\"remove\">Quitar XML</button>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<button class=\"dnd-alert-button\" tag=\"supplier\">Create Supplier</button>"
+msgstr "<button class=\"dnd-alert-button\" tag=\"supplier\">Crear Proveedor</button>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<button class=\"dnd-alert-button\" tag=\"tryagain\">Try again</button>"
+msgstr "<button class=\"dnd-alert-button\" tag=\"tryagain\">Intentar otra vez</button>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">An invoice was found with similar information to the "
+"XML attached, but the XML Folio</span> does not match with <span "
+"level=\"1\">Supplier Invoice Number</span>: "
+msgstr ""
+"<div><span level=\"1\">Una factura fue encontrada con información similar para el "
+"XML adjunto, pero el XML Folio</span> no hace match con <span "
+"level=\"1\">Number de Factura Proveedor</span>: "
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<div><span level=\"1\">Some taxes</span> do not exist: <span level=\"2\">"
+msgstr "<div><span level=\"1\">Some taxes</span> no existe: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">Some taxes</span> do not have account asigned: <span "
+"level=\"2\">"
+msgstr ""
+"<div><span level=\"1\">Algunos impuestos</span> no tienen cuenta asignada: <span "
+"level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">The DocumentType is \"E\" and The XML UUID / and the "
+"node CfdiRelacionados</span> were not found in the XML.</div>"
+msgstr ""
+"<div><span level=\"1\">The DocumentType es \"E\" and The XML UUID / y el "
+"nodo CfdiRelacionados</span> no fue encontrado en el XML.</div>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<div><span level=\"1\">The XML Currency</span> <span level=\"2\">"
+msgstr "<div><span level=\"1\">La moneda del XML</span> <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">The XML Emitter RFC</span> does not match with <span "
+"level=\"1\">Customer RFC</span>: "
+msgstr ""
+"<div><span level=\"1\">El RFC del Emisor</span> no hace match con <span "
+"level=\"1\">RFC del cliente</span>: "
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">The XML Receptor RFC</span> does not match with <span"
+" level=\"1\">your Company RFC</span>: "
+msgstr ""
+"<div><span level=\"1\">El RFC del receptor</span> no hace match con <span"
+" level=\"1\">tu RFC de compañía</span>: "
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">The XML Supplier</span> was not found: <span "
+"level=\"2\">"
+msgstr ""
+"<div><span level=\"1\">El proveedor en el XML</span> no fue encontrado: <span "
+"level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">El XML UUID</span> pertenece a otra factura. <span "
+"level=\"1\">UUID: </span>"
+msgstr ""
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">The XML amount total</span> does not match with <span"
+" level=\"1\">Invoice total</span>: "
+msgstr ""
+"<div><span level=\"1\">El monto total en el XML</span> no hace match con <span"
+" level=\"1\">total de la factura</span>: "
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">The XML state</span> is CANCELED in the SAT "
+"system.</div>"
+msgstr ""
+"<div><span level=\"1\">El estado del XML</span> es CANCELADO en el sistema "
+"SAT.</div>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">The invoice reference</span> belong to other invoice "
+"of same partner. <span level=\"1\">Partner: </span>"
+msgstr ""
+"<div><span level=\"1\">LA referencia de factura</span> pertenece a otra factura "
+"del mismo partner. <span level=\"1\">Partner: </span>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<div><span level=\"1\">UUID</span> not found in the XML.</div>"
+msgstr "<div><span level=\"1\">UUID</span> no encontrado en el XML.</div>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><span level=\"1\">Unable to generate invoices from an XML with version "
+"3.2.</span>You can create the invoice manually and then attach the "
+"xml.</div>"
+msgstr ""
+"<div><span level=\"1\">No es posible generar facturas desde un XML con version "
+"3.2.</span>Tu puedes crear la factura manualmente y después adjuntar el "
+"xml.</div>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid ""
+"<div><strong>Info!</strong> XML data could not be read correctly.</div>"
+msgstr ""
+"<div><strong>Info!</strong> Datos del XML no puede ser leído correctamente.</div>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<span level=\"1\"> Reference: </span>"
+msgstr "<span level=\"1\"> Referencia: </span>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<span>Wrong File: <span class=\"index-alert\"></span>"
+msgstr "<span>File incorrecto: <span class=\"index-alert\"></span>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<strong>Info!</strong> Some files are already loaded.<br>"
+msgstr "<strong>Info!</strong> Algunos archivos están cargados.<br>"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "<strong>Info!</strong> You only can upload XML files.<br>"
+msgstr "<strong>Info!</strong> Tu solo puedes cargar archivos XML.<br>"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_attach_xmls_wizard__account_id
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.actions.act_window,name:l10n_edi_purchase_document.attach_xmls_wizard_action
+msgid "Attach Supplier Files"
+msgstr "Adjuntar archivos de proveedor"
+
+#. module: l10n_edi_purchase_document
+#: model_terms:ir.ui.view,arch_db:l10n_edi_purchase_document.view_lasec_form_inherit_purchase_order
+msgid "Attach Supplier XML"
+msgstr "Adjuntar XML de proveedor"
+
+#. module: l10n_edi_purchase_document
+#: model_terms:ir.ui.view,arch_db:l10n_edi_purchase_document.attach_xmls_wizard_form_view
+msgid "Attach Supplier XML's"
+msgstr "Adjuntar XML de proveedor"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model,name:l10n_edi_purchase_document.model_ir_attachment
+msgid "Attachment"
+msgstr "Adjuntos"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/xml/attach_xmls_template.xml:0
+#, python-format
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "Congratulations"
+msgstr "Congratulaciones"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_account_move__display_name
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_attach_xmls_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_ir_attachment__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/xml/attach_xmls_template.xml:0
+#, python-format
+msgid "Drag and Drop your files here"
+msgstr ""
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_attach_xmls_wizard__dragndrop
+msgid "Dragndrop"
+msgstr "Arrastrar y Pegar"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "Error checking XML data."
+msgstr "Error validando datos XML."
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "Error creating invoice."
+msgstr "Error creando factura."
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "Error creating supplier."
+msgstr "Error creando proveedor."
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_attach_xmls_wizard__journal_id
+msgid "Journal"
+msgstr "Diario"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model,name:l10n_edi_purchase_document.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_account_move____last_update
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_attach_xmls_wizard____last_update
+#: model:ir.model.fields,field_description:l10n_edi_purchase_document.field_ir_attachment____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model.fields,help:l10n_edi_purchase_document.field_attach_xmls_wizard__account_id
+msgid ""
+"Optional field to define the account that will be used in all the lines of the invoice.\n"
+"If the field is not set, the wizard will take the account by default."
+msgstr ""
+"Campo opcional para definir la cuenta que será usada en todas las lineas de la factura.\n"
+"Si el campo no esta seteado, el wizard tomará la cuenta predeterminada."
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/xml/attach_xmls_template.xml:0
+#, python-format
+msgid "Save"
+msgstr "Guardar"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/xml/attach_xmls_template.xml:0
+#, python-format
+msgid "Show invoices"
+msgstr "Mostrar Facturas"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "Supplier Invoices"
+msgstr "Facturas de Proveedor"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "There are files uploading"
+msgstr "Hay archivos cargando"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "There is no files selected"
+msgstr "No hay archivos seleccionados"
+
+#. module: l10n_edi_purchase_document
+#: model:ir.model.fields,help:l10n_edi_purchase_document.field_attach_xmls_wizard__journal_id
+msgid "This journal will be used in the invoices generated with this wizard."
+msgstr "Este diario será usado en las facturas generadas con este wizard."
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "XML Emitter RFC: <span level=\"2\">"
+msgstr "RFC Emisor: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "XML Folio: <span level=\"2\">"
+msgstr "XML Folio: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "XML Receptor RFC: <span level=\"2\">"
+msgstr "XML Receptor RFC: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "XML amount total: <span level=\"2\">"
+msgstr "Monto total en XML: <span level=\"2\">"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "XML removed, the TipoDeComprobante is not I or E."
+msgstr "XML removido, el TipoDeComprobante no es I ni E."
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "You cannot attach more than one xml to an invoice"
+msgstr "Tu no puedes adjuntar mas de un xml para una factura"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/js/attach_xmls.js:0
+#, python-format
+msgid "Your invoices were created correctly"
+msgstr "Tus facturas fueron creadas correctamente"
+
+#. module: l10n_edi_purchase_document
+#. openerp-web
+#: code:addons/l10n_edi_purchase_document/static/src/xml/attach_xmls_template.xml:0
+#, python-format
+msgid "or Click to upload the files"
+msgstr "o haz click para cargar los archivos"
