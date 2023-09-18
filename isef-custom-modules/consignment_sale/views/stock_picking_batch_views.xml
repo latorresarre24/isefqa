@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_tree_batch_consignment" model="ir.ui.view">
+        <field name="name">view.picking.tree.batch.consignment</field>
+        <field name="model">stock.move</field>
+        <!-- <field name="inherit_id" ref="stock_picking_batch.view_picking_tree_batch"/> -->
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="product_id" string="Producto"/>
+                <field name="location_id" string="Desde"/>
+                <field name="location_dest_id" string="Hasta"/>
+                <field name="product_uom_qty" string="Reservado"/>
+                <field name="quantity_done" string="Hecho"/>
+                <field name="scheduled_date"/>
+                <field name="backorder"/>
+                <field name="origin"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_picking_batch_form_inherits" model="ir.ui.view">
+        <field name="name">stock.picking.batch.form.inherits</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_ids']" position="replace">
+                <field name="stock_move_ids" widget="many2many" mode="tree" context="{'tree_view_ref': 'consignment_sale.view_picking_tree_batch_consignment'}"/>
+                <field name="picking_ids" invisible="1" widget="many2many" mode="tree,kanban" context="{'form_view_ref': 'stock_picking_batch.view_picking_form_inherited', 'tree_view_ref': 'stock_picking_batch.view_picking_tree_batch'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
