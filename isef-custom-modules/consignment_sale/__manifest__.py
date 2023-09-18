@@ -14,12 +14,14 @@
         'base',
         'sale',
         'account',
+        'stock_picking_batch',
     ],
     'test': [
     ],
     'data': [
         'views/res_partner_views.xml',
         'views/sales_order_views.xml',
+        'views/stock_picking_batch_views.xml',
     ],
     'demo': [
     ],
